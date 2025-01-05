@@ -1,19 +1,16 @@
 # -*- mode: snippet -*-
-# name: blogpost
-# key: blogpost
+# name: microblog
+# key: microblog
 # --
 ---
-layout: post
+layout: microblog
 date: `(format-time-string "%Y-%m-%dT%H:%M:%S%:z")`
-title: ${1:title}
-categories:
-  - ${2:category}
 tags:
-  - blog
+  - ${1:tag}
 gist: >-
-  New blog: <a href="/">${3:gist}</a> 
+  ${2:gist}
 img:
-  src: 
-  width: 
+  src:
+  width:
 ---
 $0
