@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: blogpost
+# key: blogpost
+# --
+---
+layout: post
+date: `(format-time-string "%Y-%m-%dT%H:%M:%S%:z")`
+title: ${1:title}
+categories:
+  - ${2:category}
+tags:
+  - blog
+gist: >-
+  New blog: <a href="/">${3:gist}</a> 
+img:
+  src: 
+  width: 
+---
+$0

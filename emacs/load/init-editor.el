@@ -143,7 +143,13 @@
 (use-package yasnippet
   :ensure t
   :init
-  (yas-global-mode 1))
+  (yas-global-mode 1)
+  :hook
+  ((markdown-mode) . (lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
+  :config
+  (setq yas-snippet-dirs
+        (append yas-snippet-dirs '("~/projects/dotfiles/emacs/custom-snippets")))
+  (yas-reload-all))
 
 (use-package yasnippet-snippets
   :ensure t)
@@ -173,6 +179,9 @@
               ("M-A" . marginalia-cycle))
   :init
   (marginalia-mode))
+
+(use-package markdown-mode
+  :ensure t)
 
 (use-package orderless
   :ensure t

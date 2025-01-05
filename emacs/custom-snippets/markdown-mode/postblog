@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: microblog
+# key: microblog
+# --
+---
+layout: microblog
+date: `(format-time-string "%Y-%m-%dT%H:%M:%S%:z")`
+tags:
+  -
+gist: >-
+  ${1:gist} 
+img:
+  src: 
+  width: 
+---
+$0
