@@ -8,6 +8,9 @@
 (use-package avy
   :ensure t)
 
+(use-package bazel
+  :ensure t)
+
 (use-package cape
   :ensure t
   :bind ("C-c p" . cape-prefix-map))
@@ -36,16 +39,6 @@
   :ensure t
   :config
   (doom-modeline-mode))
-
-(elpaca
-    (eat :type git
-         :host codeberg
-         :repo "akib/emacs-eat"
-         :files ("*.el" ("term" "term/*.el") "*.texi"
-                 "*.ti" ("terminfo/e" "terminfo/e/*")
-                 ("terminfo/65" "terminfo/65/*")
-                 ("integration" "integration/*")
-                 (:exclude ".dir-locals.el" "*-tests.el"))))
 
 (use-package eldoc-box
   :ensure t)

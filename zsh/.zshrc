@@ -43,4 +43,8 @@ case `uname` in
     export GTK_MODULES="unity-gtk-module"
     export SAL_USE_VCLPLUGIN=gtk
     ;;
+    Darwin)
+    alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin-arm64-11/emacsclient"
+    alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+    ;;
 esac
