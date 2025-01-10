@@ -31,6 +31,8 @@
   (setq gc-cons-threshold 100000000)
   (setq inhibit-startup-screen 1)
   (setq vc-follow-symlinks t)
+  (setq auto-save-visited-mode t)
+  (auto-save-visited-mode +1)
   (cua-mode t)
   (recentf-mode t)
   (global-display-line-numbers-mode t)
