@@ -1,4 +1,4 @@
-(load-file "~/projects/dotfiles/emacs/package-manager/package.el") 
+(load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el") 
 
 (if (eq system-type 'darwin)
     ;;; mac osx
@@ -44,7 +44,7 @@
   (defun my/on-window-display ()
     (if (display-graphic-p)
         (progn
-          (set-frame-font "Cascadia Mono 15" nil t)
+          (set-frame-font "Cascadia Code 15" nil t)
           (vim-tab-bar-mode 1)
           )
       (progn
