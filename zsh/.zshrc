@@ -44,7 +44,8 @@ case `uname` in
     export SAL_USE_VCLPLUGIN=gtk
     ;;
     Darwin)
-    alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin-arm64-11/emacsclient"
+    alias ecw="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --create-frame"
+    alias ect="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
     alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
     ;;
 esac
