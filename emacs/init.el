@@ -40,11 +40,20 @@
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-
+  (add-hook 'text-mode-hook
+            (lambda ()
+              ;; (variable-pitch-mode 1)
+              (visual-line-mode 1)
+              (display-line-numbers-mode -1)))
   (defun my/on-window-display ()
     (if (display-graphic-p)
         (progn
-          (set-frame-font "Cascadia Code 15" nil t)
+          (set-frame-font "Source Code Pro 15" nil t)
+          ;; (set-face-attribute 'default nil :family "Source Code Pro" :height 150 :width 'normal)
+          ;; (set-face-attribute 'fixed-pitch nil :family "Source Code Pro")
+          ;; (set-face-attribute 'variable-pitch nil :family "Source Sans 3")
+          ;; (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+          ;; (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
           (vim-tab-bar-mode 1)
           )
       (progn

@@ -1,13 +1,12 @@
 (use-package org
   :ensure t
-  :hook
-  (org-mode . visual-line-mode)
   :config
+  (add-to-list 'org-modules 'org-habit t)
   (setq
    ;; Edit settings
    org-startup-folded 'show2levels
    org-startup-align-all-tables t
-   org-startup-indented t
+   ;; org-startup-indented t
    org-auto-align-tags nil
    org-tags-column 0
    org-fold-catch-invisible-edits 'show-and-error
@@ -30,12 +29,18 @@
    '((daily today require-timed)
      (800 1000 1200 1400 1600 1800 2000)
      " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
-   org-agenda-current-time-string
-   "◀── now ──────────────────────────────────")
-
-  ;; Ellipsis styling
-  (setq org-ellipsis "…")
+   org-agenda-current-time-string "◀── now ──────────────────────────────────"
+  org-ellipsis "…")
   (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
+;; (set-face-attribute 'org-block nil            :foreground nil :inherit
+;; 'fixed-pitch :height 0.85)
+;; (set-face-attribute 'org-code nil             :inherit '(shadow fixed-pitch) :height 0.85)
+;; (set-face-attribute 'org-indent nil           :inherit '(org-hide fixed-pitch) :height 0.85)
+;; (set-face-attribute 'org-verbatim nil         :inherit '(shadow fixed-pitch) :height 0.85)
+;; (set-face-attribute 'org-special-keyword nil  :inherit '(font-lock-comment-face
+;; fixed-pitch))
+;; (set-face-attribute 'org-meta-line nil        :inherit '(font-lock-comment-face fixed-pitch))
+;; (set-face-attribute 'org-checkbox nil         :inherit 'fixed-pitch)
   )
 
 (use-package org-roam
