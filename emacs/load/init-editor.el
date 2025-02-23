@@ -8,6 +8,8 @@
 (use-package avy
   :ensure t)
 
+(use-package compat :ensure (:host github :repo "emacs-compat/compat" :branch main))
+
 (use-package bazel
   :ensure t)
 
@@ -151,7 +153,8 @@
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
-               '(erlang-mode . ("elp" "server")))
+               '(erlang-mode . ("elp" "server"))
+               '(rust-mode . ("rust-analyzer")))
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (setq completion-category-overrides '((eglot (styles orderless))
                                         (eglot-capf (styles orderless))))
@@ -162,7 +165,7 @@
                        #'cape-file))))
   (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
   :hook
-  ((erlang-mode) . 'eglot-ensure))
+  ((erlang-mode rust-mode) . 'eglot-ensure))
 
 (use-package magit
   :ensure t)
@@ -206,6 +209,11 @@
   :config
   (require 'smartparens-config)
   (smartparens-global-mode t))
+
+(use-package rust-mode
+  :init
+  (setq rust-format-on-save t)
+  :ensure t)
 
 (use-package solaire-mode
   :ensure t

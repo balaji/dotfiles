@@ -4,7 +4,6 @@ SAVEHIST=1000
 setopt autocd extendedglob nomatch notify
 bindkey -e
 zstyle :compinstall filename '~/.zshrc'
-
 skip_global_compinit=1
 # End of lines added by compinstall
 
@@ -14,7 +13,6 @@ source ~/.zsh/git-prompt.zsh/examples/multiline.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 if [ "$TMUX" = "" ]; then tmux new -A -s main; fi 
-eval "$(rbenv init - zsh)"
 
 alias e=emacsclient
 alias g='git'
@@ -33,6 +31,7 @@ case `uname` in
     alias code="code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
     alias spotify="spotify --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
     alias 1password="1password --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
+    alias steam="steam --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
 
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
@@ -49,3 +48,7 @@ case `uname` in
     alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
     ;;
 esac
+
+# Added by `rbenv init` on Sun Jan 12 05:38:44 PM CET 2025
+eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
+. "$HOME/.cargo/env"
