@@ -1,5 +1,4 @@
 (use-package org
-  :ensure t
   :config
   (add-to-list 'org-modules 'org-habit t)
   (setq

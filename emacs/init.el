@@ -9,6 +9,7 @@
       ;;; linux
       (progn
 	(setq projects-path '("~/projects"))
+	(setq erlang-home "/usr/local/lib/erlang")
 	)
     ;;; windows
     (progn
@@ -18,7 +19,8 @@
 (use-package better-defaults :ensure t)
 
 (add-to-list 'load-path "~/projects/dotfiles/emacs/modules/")
-(require 'vim-tab-bar)
+(add-to-list 'load-path (format "%s%s" erlang-home "/lib/tools-4.1/emacs"))
+(use-package vim-tab-bar)
 (use-package emacs
   :custom
   (enable-recursive-minibuffers t)
@@ -48,7 +50,7 @@
   (defun my/on-window-display ()
     (if (display-graphic-p)
         (progn
-          (set-frame-font "Source Code Pro 11" nil t)
+          (set-frame-font "Cascadia Code 11" nil t)
           (vim-tab-bar-mode 1)
           )
       (progn

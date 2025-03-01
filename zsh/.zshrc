@@ -38,6 +38,7 @@ case `uname` in
         source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 
     alias docker=podman
+    alias e='emacsclient -c -a ""'
     export PATH="/home/balaji/bin:$PATH:/home/balaji/.local/share/JetBrains/Toolbox/scripts"
     export GTK_MODULES="unity-gtk-module"
     export SAL_USE_VCLPLUGIN=gtk
@@ -52,3 +53,7 @@ esac
 # Added by `rbenv init` on Sun Jan 12 05:38:44 PM CET 2025
 eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
 . "$HOME/.cargo/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

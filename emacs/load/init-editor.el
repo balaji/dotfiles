@@ -5,13 +5,9 @@
   (setq aw-dispatch-always t)
   (ace-window-display-mode))
 
-(use-package avy
-  :ensure t)
+(use-package avy :ensure t)
 
-(use-package compat :ensure (:host github :repo "emacs-compat/compat" :branch main))
-
-(use-package bazel
-  :ensure t)
+(use-package bazel :ensure t)
 
 (use-package cape
   :ensure t
@@ -42,11 +38,7 @@
   :config
   (doom-modeline-mode))
 
-(use-package eldoc-box
-  :ensure t)
-
-(use-package elpy
-  :ensure t)
+(use-package eldoc-box :ensure t)
 
 (use-package embark
   :ensure t
@@ -68,10 +60,7 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-(use-package erlang
-  :ensure t
-  :hook
-  (erlang-mode . eldoc-box-hover-at-point-mode))
+(use-package erlang)
 
 (use-package evil
   :ensure t
@@ -150,11 +139,22 @@
 (use-package yasnippet-snippets
   :ensure t)
 
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
+(use-package rust-mode
+  :init
+  (setq rust-format-on-save t)
+  :ensure t)
+
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
                '(erlang-mode . ("elp" "server"))
-               '(rust-mode . ("rust-analyzer")))
+               )
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (setq completion-category-overrides '((eglot (styles orderless))
                                         (eglot-capf (styles orderless))))
@@ -164,11 +164,14 @@
                        #'eglot-completion-at-point
                        #'cape-file))))
   (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
+  (setq eglot-autoshutdown t)
   :hook
-  ((erlang-mode rust-mode) . 'eglot-ensure))
+  ((erlang-mode rust-mode python-mode) . 'eglot-ensure)
+  ((eglot-managed-mode) . eldoc-box-hover-mode)
+                                        ;((after-save) . 'eglot-format)
+  )
 
-(use-package magit
-  :ensure t)
+(use-package magit :ensure t)
 
 (use-package marginalia
   :ensure t
@@ -177,8 +180,7 @@
   :init
   (marginalia-mode))
 
-(use-package markdown-mode
-  :ensure t)
+(use-package markdown-mode :ensure t)
 
 (use-package orderless
   :ensure t
@@ -210,27 +212,23 @@
   (require 'smartparens-config)
   (smartparens-global-mode t))
 
-(use-package rust-mode
-  :init
-  (setq rust-format-on-save t)
-  :ensure t)
-
 (use-package solaire-mode
   :ensure t
   :config
   (solaire-global-mode +1))
 
 ;; required for magit
-(use-package transient
-  :ensure t)
+(use-package transient :ensure t)
 
 (use-package treemacs
   :ensure t)
 
 (use-package treemacs-evil
+  :after (treemacs evil)
   :ensure t)
 
-(use-package treemacs-tab-bar
+(use-package treemacs-magit
+  :after (treemacs magit)
   :ensure t)
 
 (use-package vertico
