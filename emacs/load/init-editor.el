@@ -38,6 +38,27 @@
   :config
   (doom-modeline-mode))
 
+(use-package eglot
+  :config
+  (add-to-list 'eglot-server-programs
+               '(erlang-mode . ("elp" "server"))
+               '((rust-ts-mode rust-mode) . ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))
+               )
+  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
+  (setq completion-category-overrides '((eglot (styles orderless))
+                                        (eglot-capf (styles orderless))))
+  (defun my/eglot-capf ()
+    (setq-local completion-at-point-functions
+                (list (cape-capf-super
+                       #'eglot-completion-at-point
+                       #'cape-file))))
+  (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
+  (setq eglot-autoshutdown t)
+  :hook
+  ((erlang-mode rust-mode python-mode) . 'eglot-ensure)
+  ((eglot-managed-mode) . eldoc-box-hover-mode)
+  )
+
 (use-package eldoc-box :ensure t)
 
 (use-package embark
@@ -91,15 +112,6 @@
   (setq ffip-match-path-instead-of-filename t)
   (setq ffip-use-rust-fd t))
 
-(use-package flycheck
-  :ensure t
-  :init
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  (setq flycheck-ruby-rubocop-executable "/Users/bala/stripe/pay-server/scripts/bin/rubocop.rb")
-  (setq flycheck-ruby-executable "/Users/bala/.rbenv/shims/ruby")
-  :config
-  (global-flycheck-mode 1))
-
 (use-package general
   :ensure t
   :config
@@ -150,26 +162,10 @@
   (setq rust-format-on-save t)
   :ensure t)
 
-(use-package eglot
-  :config
-  (add-to-list 'eglot-server-programs
-               '(erlang-mode . ("elp" "server"))
-               )
-  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
-  (setq completion-category-overrides '((eglot (styles orderless))
-                                        (eglot-capf (styles orderless))))
-  (defun my/eglot-capf ()
-    (setq-local completion-at-point-functions
-                (list (cape-capf-super
-                       #'eglot-completion-at-point
-                       #'cape-file))))
-  (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
-  (setq eglot-autoshutdown t)
+(use-package ruff-format
+  :ensure t
   :hook
-  ((erlang-mode rust-mode python-mode) . 'eglot-ensure)
-  ((eglot-managed-mode) . eldoc-box-hover-mode)
-                                        ;((after-save) . 'eglot-format)
-  )
+  ((python-mode) . 'ruff-format-on-save-mode))
 
 (use-package magit :ensure t)
 
@@ -240,6 +236,9 @@
   (setq vertico-multiform-categories '((embark-keybinding grid)))
   :init
   (vertico-mode))
+
+(use-package vterm
+    :ensure t)
 
 (use-package whaler
   :ensure t

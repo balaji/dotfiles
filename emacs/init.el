@@ -50,7 +50,7 @@
   (defun my/on-window-display ()
     (if (display-graphic-p)
         (progn
-          (set-frame-font "Cascadia Code 11" nil t)
+          (set-frame-font "Source Code Pro 11" nil t)
           (vim-tab-bar-mode 1)
           )
       (progn
