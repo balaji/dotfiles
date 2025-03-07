@@ -38,29 +38,6 @@
   :config
   (doom-modeline-mode))
 
-(use-package eglot
-  :config
-  (add-to-list 'eglot-server-programs
-               '(erlang-mode . ("elp" "server"))
-               '((rust-ts-mode rust-mode) . ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))
-               )
-  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
-  (setq completion-category-overrides '((eglot (styles orderless))
-                                        (eglot-capf (styles orderless))))
-  (defun my/eglot-capf ()
-    (setq-local completion-at-point-functions
-                (list (cape-capf-super
-                       #'eglot-completion-at-point
-                       #'cape-file))))
-  (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
-  (setq eglot-autoshutdown t)
-  :hook
-  ((erlang-mode rust-mode python-mode) . 'eglot-ensure)
-  ((eglot-managed-mode) . eldoc-box-hover-mode)
-  )
-
-(use-package eldoc-box :ensure t)
-
 (use-package embark
   :ensure t
   :bind
@@ -100,6 +77,12 @@
   :config
   (evil-collection-init))
 
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
 (use-package expand-region
   :ensure t
   :config
@@ -111,6 +94,10 @@
   :config
   (setq ffip-match-path-instead-of-filename t)
   (setq ffip-use-rust-fd t))
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
 
 (use-package general
   :ensure t
@@ -137,35 +124,28 @@
 (use-package hydra
   :ensure t)
 
-(use-package yasnippet
-  :ensure t
+(use-package lsp-mode
   :init
-  (yas-global-mode 1)
-  :hook
-  ((markdown-mode) . (lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((lsp-mode . lsp-enable-which-key-integration))
   :config
-  (setq yas-snippet-dirs
-        (append yas-snippet-dirs '("~/projects/dotfiles/emacs/custom-snippets")))
-  (yas-reload-all))
+  (setq lsp-log-io nil
+        lsp-enable-file-watchers nil
+        lsp-file-watch-threshold 6000
+        lsp-disabled-clients '(semgrep-ls ruff)
+        )
+  :commands  (lsp lsp-deferred))
 
-(use-package yasnippet-snippets
-  :ensure t)
-
-(use-package exec-path-from-shell
+(use-package lsp-ui
   :ensure t
-  :init
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
+  :after (lsp-mode))
 
-(use-package rust-mode
-  :init
-  (setq rust-format-on-save t)
-  :ensure t)
-
-(use-package ruff-format
+(use-package lsp-pyright
   :ensure t
-  :hook
-  ((python-mode) . 'ruff-format-on-save-mode))
+  :custom (lsp-pyright-langserver-command "pyright")
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp-deferred))))
 
 (use-package magit :ensure t)
 
@@ -199,6 +179,16 @@
     (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local)
     (setq ruby-insert-encoding-magic-comment nil))
   (add-hook 'ruby-mode-hook 'my-ruby-mode-hook))
+
+(use-package rust-mode
+  :init
+  (setq rust-format-on-save t)
+  :ensure t)
+
+(use-package ruff-format
+  :ensure t
+  :hook
+  ((python-mode) . 'ruff-format-on-save-mode))
 
 (use-package smartparens
   :ensure t
@@ -238,7 +228,7 @@
   (vertico-mode))
 
 (use-package vterm
-    :ensure t)
+  :ensure t)
 
 (use-package whaler
   :ensure t
@@ -246,10 +236,23 @@
   (setq whaler-directories-alist projects-path)
   (setq whaler-include-hidden-directories nil)
   (setq whaler-default-working-directory "~")
-  (setq whaler-oneoff-directories-alist '("~/Nextcloud/journal"))
   (whaler-populate-projects-directories))
 
 (use-package which-key
   :ensure t
   :config
   (which-key-mode))
+
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode 1)
+  :hook
+  ((markdown-mode) . (lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
+  :config
+  (setq yas-snippet-dirs
+        (append yas-snippet-dirs '("~/projects/dotfiles/emacs/custom-snippets")))
+  (yas-reload-all))
+
+(use-package yasnippet-snippets
+  :ensure t)

@@ -4,12 +4,13 @@
     ;;; mac osx
     (progn
       (setq projects-path '("~/projects" "~/stripe"))
+  	(add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
       )
   (if (eq system-type 'gnu/linux)
       ;;; linux
       (progn
 	(setq projects-path '("~/projects"))
-	(setq erlang-home "/usr/local/lib/erlang")
+	(add-to-list 'load-path "/usr/local/lib/erlang/lib/tools-4.1/emacs")
 	)
     ;;; windows
     (progn
@@ -19,7 +20,6 @@
 (use-package better-defaults :ensure t)
 
 (add-to-list 'load-path "~/projects/dotfiles/emacs/modules/")
-(add-to-list 'load-path (format "%s%s" erlang-home "/lib/tools-4.1/emacs"))
 (use-package vim-tab-bar)
 (use-package emacs
   :custom
