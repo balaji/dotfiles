@@ -18,7 +18,7 @@
   :bind
   (("C-x b" . consult-buffer)
    ("C-s" . consult-line)
-   ("C-c r" . consult-recent-file)))
+   ("C-x h" . consult-recent-file)))
 
 (use-package corfu
   :custom
@@ -31,7 +31,7 @@
 
 (use-package doom-themes
   :ensure t
-  :config (load-theme 'doom-gruvbox t))
+  :config (load-theme 'doom-1337 t))
 
 (use-package doom-modeline
   :ensure t
@@ -86,8 +86,8 @@
 (use-package expand-region
   :ensure t
   :config
-  (global-set-key (kbd "C-=") 'er/expand-region)
-  (global-set-key (kbd "C--") 'er/contract-region))
+  (global-set-key (kbd "M-w") 'er/expand-region)
+  (global-set-key (kbd "M-W") 'er/contract-region))
 
 (use-package find-file-in-project
   :ensure t
@@ -97,7 +97,15 @@
 
 (use-package flycheck
   :ensure t
+  :bind
+  (("<f2>" . flycheck-list-errors))
   :init (global-flycheck-mode))
+
+(use-package flycheck-rust
+  :after (flycheck rust-mode)
+  :ensure t
+  :hook
+  ('flycheck-mode . 'flycheck-rust-setup))
 
 (use-package general
   :ensure t
@@ -109,6 +117,8 @@
    :global-prefix "C-c"
    :non-normal-prefix "M-SPC"
    :prefix "SPC"
+   "en" 'flycheck-next-error
+   "ep" 'flycheck-previous-error
    "fr" 'find-file-in-project-by-selected
    "ff" 'consult-fd
    "ss" 'consult-ripgrep
@@ -116,7 +126,7 @@
    "sw" 'avy-goto-word-1
    "sl" 'avy-goto-line
    "pp" 'whaler
-   "wr" 'whaler-populate-projects-directories)
+   "pr" 'whaler-populate-projects-directories)
 
   (general-create-definer leader-global :keymaps 'custom/prefix))
 
@@ -134,7 +144,14 @@
         lsp-file-watch-threshold 6000
         lsp-disabled-clients '(semgrep-ls ruff)
         )
-  :commands  (lsp lsp-deferred))
+  :bind
+  (("C-c r" . xref-find-references)
+   ("C-c d" . xref-find-definitions)
+   ("<M-left>" . xref-go-back)
+   ("<M-right>" . xref-go-forward))
+  :commands  (lsp lsp-deferred)
+  :hook
+  (lsp-deferred . '(rust-mode)))
 
 (use-package lsp-ui
   :ensure t
@@ -193,7 +210,17 @@
 (use-package smartparens
   :ensure t
   :bind
-  ("<f7>" . 'smartparens-mode)
+  (("<f7>" . 'smartparens-mode)
+   ("<C-right>" . 'sp-forward-slurp-sexp)
+   ("<C-left>" . 'sp-forward-barf-sexp)
+   ("<C-M-right>" . 'sp-backward-slurp-sexp)
+   ("<C-M-left>" . 'sp-backward-barf-sexp)
+   ("M-(" . 'sp-wrap-round)
+   ("M-[" . 'sp-wrap-square)
+   ("M-{" . 'sp-wrap-curly)
+   ("C-M-<delete>" . 'sp-splice-sexp-killing-forward)
+   ("C-M-<backspace>" . 'sp-splice-sexp-killing-backward)
+   )
   :config
   (require 'smartparens-config)
   (smartparens-global-mode t))

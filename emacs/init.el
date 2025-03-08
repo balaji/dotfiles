@@ -4,7 +4,7 @@
     ;;; mac osx
     (progn
       (setq projects-path '("~/projects" "~/stripe"))
-  	(add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
+      (add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
       )
   (if (eq system-type 'gnu/linux)
       ;;; linux
@@ -61,6 +61,8 @@
             (lambda (frame)
               (select-frame frame)
               (my/on-window-display)))
-  (add-hook 'after-init-hook #'my/on-window-display))
+  (add-hook 'after-init-hook #'my/on-window-display)
+  :bind
+  (("M-p" . yank-from-kill-ring)))
 
 (mapc 'load (file-expand-wildcards "~/projects/dotfiles/emacs/load/*.el"))
