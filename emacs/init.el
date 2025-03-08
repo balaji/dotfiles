@@ -15,6 +15,7 @@
     ;;; windows
     (progn
       (setq lsp-erlang-ls-server-path "c:/users/balaj/bin/erlang_ls.cmd")
+      (add-to-list 'load-path "c:/users/balaj/scoop/apps/erlang/current/lib/tools-4.1.1/emacs")
       (setq projects-path '("~/projects"))
       )))
 (use-package better-defaults :ensure t)
