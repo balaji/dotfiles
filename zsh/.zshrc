@@ -9,10 +9,10 @@ skip_global_compinit=1
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/git-prompt.zsh/git-prompt.zsh
-source ~/.zsh/git-prompt.zsh/examples/multiline.zsh
+source ~/.zsh/git-prompt.zsh/examples/compact.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-if [ "$TMUX" = "" ]; then tmux new -A -s main; fi 
+# if [ "$TMUX" = "" ]; then tmux new -A -s main; fi 
 
 alias e=emacsclient
 alias g='git'
@@ -32,11 +32,6 @@ case `uname` in
     alias spotify="spotify --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
     alias 1password="1password --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
     alias steam="steam --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
-
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-        source "$EAT_SHELL_INTEGRATION_DIR/zsh"
-
     alias docker=podman
     alias e='emacsclient -c -a ""'
     export PATH="/home/balaji/bin:$PATH:/home/balaji/.local/share/JetBrains/Toolbox/scripts"
@@ -46,11 +41,3 @@ case `uname` in
     Darwin)
     ;;
 esac
-
-# Added by `rbenv init` on Sun Jan 12 05:38:44 PM CET 2025
-eval "$(~/.rbenv/bin/rbenv init - --no-rehash zsh)"
-. "$HOME/.cargo/env"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -29,9 +29,12 @@
   :init
   (global-corfu-mode))
 
+(use-package modus-themes
+  :ensure t)
+
 (use-package doom-themes
   :ensure t
-  :config (load-theme 'doom-1337 t))
+  :config (load-theme 'doom-gruvbox t))
 
 (use-package doom-modeline
   :ensure t
@@ -255,7 +258,10 @@
   (vertico-mode))
 
 (use-package vterm
-  :ensure t)
+  :ensure t
+  :hook
+  ('vterm-mode . (lambda ()
+                   (display-line-numbers-mode -1))))
 
 (use-package whaler
   :ensure t

@@ -10,7 +10,7 @@
       ;;; linux
       (progn
 	(setq projects-path '("~/projects"))
-	(add-to-list 'load-path "/usr/local/lib/erlang/lib/tools-4.1/emacs")
+	(add-to-list 'load-path "/usr/lib64/erlang/lib/tools-3.6/emacs")
 	)
     ;;; windows
     (progn
@@ -51,7 +51,7 @@
   (defun my/on-window-display ()
     (if (display-graphic-p)
         (progn
-          (set-frame-font "Source Code Pro 11" nil t)
+          (set-frame-font "Monospace 10" nil t)
           (vim-tab-bar-mode 1)
           )
       (progn
