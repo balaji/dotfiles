@@ -25,6 +25,7 @@ alias gco='git commit'
 alias gr='git rm'
 alias gfu='git fetch upstream'
 alias r3=rebar3
+alias vim=nvim
 
 case `uname` in
     Linux)

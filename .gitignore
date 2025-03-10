@@ -2,3 +2,4 @@
 \#*\#
 *.elc
 .\#*
+emacs/load/init-stripe.el

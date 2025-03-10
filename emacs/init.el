@@ -3,20 +3,23 @@
 (if (eq system-type 'darwin)
     ;;; mac osx
     (progn
-      (setq projects-path '("~/projects" "~/stripe"))
+      (setq projects-path '("~/projects"))
       (add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
+      (setq my-font "Monaco 14")
       )
   (if (eq system-type 'gnu/linux)
       ;;; linux
       (progn
 	(setq projects-path '("~/projects"))
 	(add-to-list 'load-path "/usr/lib64/erlang/lib/tools-3.6/emacs")
+        (setq my-font "Monospace 11")
 	)
     ;;; windows
     (progn
       (setq lsp-erlang-ls-server-path "c:/users/balaj/bin/erlang_ls.cmd")
       (add-to-list 'load-path "c:/users/balaj/scoop/apps/erlang/current/lib/tools-4.1.1/emacs")
       (setq projects-path '("~/projects"))
+      (setq my-font "Consolas 11")
       )))
 (use-package better-defaults :ensure t)
 
@@ -51,7 +54,7 @@
   (defun my/on-window-display ()
     (if (display-graphic-p)
         (progn
-          (set-frame-font "Monospace 10" nil t)
+          (set-frame-font my-font nil t)
           (vim-tab-bar-mode 1)
           )
       (progn
@@ -63,6 +66,9 @@
               (select-frame frame)
               (my/on-window-display)))
   (add-hook 'after-init-hook #'my/on-window-display)
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+
   :bind
   (("M-p" . yank-from-kill-ring)))
 

@@ -137,6 +137,14 @@
 (use-package hydra
   :ensure t)
 
+(use-package treesit-auto
+  :ensure t
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
@@ -154,7 +162,7 @@
    ("<M-right>" . xref-go-forward))
   :commands  (lsp lsp-deferred)
   :hook
-  (lsp-deferred . '(rust-mode)))
+  ((rust-mode ruby-mode typescript-ts-mode js-ts-mode) . 'lsp-deferred))
 
 (use-package lsp-ui
   :ensure t
