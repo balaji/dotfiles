@@ -42,3 +42,5 @@ case `uname` in
     Darwin)
     ;;
 esac
+
+[ -f "/home/balaji/.ghcup/env" ] && . "/home/balaji/.ghcup/env" # ghcup-env
