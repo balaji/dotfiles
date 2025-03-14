@@ -145,31 +145,13 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
-(use-package lsp-mode
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook ((lsp-mode . lsp-enable-which-key-integration))
-  :config
-  (setq lsp-log-io nil
-        lsp-enable-file-watchers nil
-        lsp-file-watch-threshold 6000
-        lsp-disabled-clients '(semgrep-ls ruff)
-        )
-  :bind
-  (("C-c r" . xref-find-references)
-   ("C-c d" . xref-find-definitions)
-   ("<M-left>" . xref-go-back)
-   ("<M-right>" . xref-go-forward))
-  :commands  (lsp lsp-deferred)
-  :hook
-  ((rust-mode ruby-mode typescript-ts-mode js-ts-mode) . 'lsp-deferred))
-
 (use-package lsp-ui
   :ensure t
   :after (lsp-mode))
 
 (use-package lsp-pyright
   :ensure t
+  :after (lsp-mode)
   :custom (lsp-pyright-langserver-command "pyright")
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
@@ -270,6 +252,22 @@
   :hook
   ('vterm-mode . (lambda ()
                    (display-line-numbers-mode -1))))
+
+(defun run-in-vterm (command)
+  "Insert text of current line in vterm and execute."
+  (interactive)
+  (require 'vterm)
+  (eval-when-compile (require 'subr-x))
+  (let ((buf (current-buffer)))
+    (unless (get-buffer vterm-buffer-name)
+      (vterm))
+    (display-buffer vterm-buffer-name t)
+    (switch-to-buffer-other-window vterm-buffer-name)
+    (vterm--goto-line -1)
+    (message command)
+    (vterm-send-string command)
+    (vterm-send-return)
+    (switch-to-buffer-other-window buf)))
 
 (use-package whaler
   :ensure t

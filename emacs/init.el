@@ -72,4 +72,24 @@
   :bind
   (("M-p" . yank-from-kill-ring)))
 
+(use-package lsp-mode
+  :ensure t
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((lsp-mode . lsp-enable-which-key-integration))
+  :config
+  (setq lsp-log-io nil
+        lsp-enable-file-watchers nil
+        lsp-file-watch-threshold 6000
+        lsp-disabled-clients '(semgrep-ls ruff)
+        )
+  :bind
+  (("C-c r" . xref-find-references)
+   ("C-c d" . xref-find-definitions)
+   ("<M-left>" . xref-go-back)
+   ("<M-right>" . xref-go-forward))
+  :commands  (lsp lsp-deferred)
+  :hook
+  ((rust-ts-mode python-ts-mode ruby-ts-mode typescript-ts-mode js-ts-mode) . 'lsp-deferred))
+
 (mapc 'load (file-expand-wildcards "~/projects/dotfiles/emacs/load/*.el"))
