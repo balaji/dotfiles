@@ -120,6 +120,12 @@
    :global-prefix "C-c"
    :non-normal-prefix "M-SPC"
    :prefix "SPC"
+   "nl" 'org-roam-buffer-toggle
+   "nf" 'org-roam-node-find
+   "ng" 'org-roam-graph
+   "ni" 'org-roam-node-insert
+   "ncc" 'org-roam-capture
+   "ncj" 'org-journal-new-entry
    "en" 'flycheck-next-error
    "ep" 'flycheck-previous-error
    "fr" 'find-file-in-project-by-selected
@@ -275,6 +281,7 @@
   (setq whaler-directories-alist projects-path)
   (setq whaler-include-hidden-directories nil)
   (setq whaler-default-working-directory "~")
+  ;; (setq whaler-oneoff-directories-alist '("~/Nextcloud/journal"))
   (whaler-populate-projects-directories))
 
 (use-package which-key

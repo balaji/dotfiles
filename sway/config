@@ -118,7 +118,7 @@ exec {
     firefox
     nm-applet
     blueman-applet
-    # nextcloud --background
+    nextcloud --background
     pasystray
     # kwalletd6
     dunst

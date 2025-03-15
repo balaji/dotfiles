@@ -12,7 +12,7 @@
       (progn
 	(setq projects-path '("~/projects"))
 	(add-to-list 'load-path "/usr/lib64/erlang/lib/tools-3.6/emacs")
-        (setq my-font "Monospace 11")
+        (setq my-font "Source Code Pro 11")
 	)
     ;;; windows
     (progn
