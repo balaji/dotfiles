@@ -125,7 +125,8 @@
    "ng" 'org-roam-graph
    "ni" 'org-roam-node-insert
    "ncc" 'org-roam-capture
-   "ncj" 'org-journal-new-entry
+   "ncj" 'org-roam-dailies-goto-today
+   "ncd" 'org-roam-dailies-goto-date
    "en" 'flycheck-next-error
    "ep" 'flycheck-previous-error
    "fr" 'find-file-in-project-by-selected
