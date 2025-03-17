@@ -14,7 +14,6 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # if [ "$TMUX" = "" ]; then tmux new -A -s main; fi 
 
-alias e=emacsclient
 alias g='git'
 alias gpl='git pull'
 alias gpu='git push'
@@ -40,6 +39,8 @@ case `uname` in
     export SAL_USE_VCLPLUGIN=gtk
     ;;
     Darwin)
+        alias e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+        alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
     ;;
 esac
 
