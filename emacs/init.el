@@ -12,7 +12,7 @@
       (progn
 	(setq projects-path '("~/projects"))
 	(add-to-list 'load-path "/usr/lib64/erlang/lib/tools-3.6/emacs")
-        (setq my-font "Source Code Pro 11")
+        (setq my-font "Inconsolata 11")
 	)
     ;;; windows
     (progn
@@ -24,7 +24,7 @@
 (use-package better-defaults :ensure t)
 
 (add-to-list 'load-path "~/projects/dotfiles/emacs/modules/")
-(use-package vim-tab-bar)
+;; (use-package vim-tab-bar)
 (use-package emacs
   :custom
   (enable-recursive-minibuffers t)
@@ -51,21 +51,21 @@
               ;; (variable-pitch-mode 1)
               (visual-line-mode 1)
               (display-line-numbers-mode -1)))
-  (defun my/on-window-display ()
-    (if (display-graphic-p)
-        (progn
-          (set-frame-font my-font nil t)
-          (vim-tab-bar-mode 1)
-          )
-      (progn
-        (vim-tab-bar-mode 0)
-	)))
+  ;; (defun my/on-window-display ()
+  ;;   (if (display-graphic-p)
+  ;;       (progn
+  ;;         (set-frame-font my-font nil t)
+  ;;         (vim-tab-bar-mode 1)
+  ;;         )
+  ;;     (progn
+  ;;       (vim-tab-bar-mode 0)
+  ;;       )))
 
   (add-hook 'after-make-frame-functions
             (lambda (frame)
               (select-frame frame)
               (my/on-window-display)))
-  (add-hook 'after-init-hook #'my/on-window-display)
+  ;; (add-hook 'after-init-hook #'my/on-window-display)
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
