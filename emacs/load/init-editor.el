@@ -224,7 +224,6 @@
    ("<C-M-right>" . 'sp-backward-slurp-sexp)
    ("<C-M-left>" . 'sp-backward-barf-sexp)
    ("M-(" . 'sp-wrap-round)
-   ("M-[" . 'sp-wrap-square)
    ("M-{" . 'sp-wrap-curly)
    ("C-M-<delete>" . 'sp-splice-sexp-killing-forward)
    ("C-M-<backspace>" . 'sp-splice-sexp-killing-backward)
@@ -330,3 +329,10 @@
 
 (use-package copilot
   :ensure (:host github :repo "balaji/copilot.el" :files ("*.el")))
+
+(use-package cody
+  :ensure (:host github :repo "sourcegraph/emacs-cody" :files ("*.el"))
+  :config
+  (setq
+   cody--access-token "sgp_fd1b4edb60bf82b8_18ae74699265caba89b82352c6cfd3e1b5e86e71"
+   cody--workspace-root "/home/balaji/projects/typescript-playground"))
