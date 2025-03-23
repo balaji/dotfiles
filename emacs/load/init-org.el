@@ -10,7 +10,7 @@
    org-fold-catch-invisible-edits 'show-and-error
    org-special-ctrl-a/e t
    org-insert-heading-respect-content t
-   org-directory "~/projects/journal"
+   org-directory "~/Dropbox/journal"
    org-roam-directory org-directory
    org-default-notes-file (concat org-directory "/notes.org")
    org-duration-format (quote h:mm)
@@ -52,12 +52,12 @@
   (setq org-modern-star 'replace)
   (global-org-modern-mode))
 
-(use-package vulpea
-  :ensure t
-  ;; hook into org-roam-db-autosync-mode you wish to enable
-  ;; persistence of meta values (see respective section in README to
-  ;; find out what meta means)
-  :hook ((org-roam-db-autosync-mode . vulpea-db-autosync-enable)))
+;; (use-package vulpea
+;;   :ensure t
+;;   ;; hook into org-roam-db-autosync-mode you wish to enable
+;;   ;; persistence of meta values (see respective section in README to
+;;   ;; find out what meta means)
+;;   :hook ((org-roam-db-autosync-mode . vulpea-db-autosync-enable)))
 
 (defun vulpea-project-p ()
   "Return non-nil if current buffer has any todo entry.
@@ -122,6 +122,7 @@ tasks."
 (add-hook 'find-file-hook #'vulpea-project-update-tag)
 (add-hook 'before-save-hook #'vulpea-project-update-tag)
 
+(advice-add 'org-agenda-list :before #'vulpea-agenda-files-update)
 (advice-add 'org-agenda :before #'vulpea-agenda-files-update)
 (advice-add 'org-todo-list :before #'vulpea-agenda-files-update)
 

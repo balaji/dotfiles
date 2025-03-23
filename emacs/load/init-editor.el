@@ -120,6 +120,10 @@
    :global-prefix "C-c"
    :non-normal-prefix "M-SPC"
    :prefix "SPC"
+   "gg" 'perspective-map
+
+   "tt" 'treemacs-add-and-display-current-project-exclusively
+
    "nl" 'org-roam-buffer-toggle
    "nf" 'org-roam-node-find
    "ng" 'org-roam-graph
@@ -127,14 +131,18 @@
    "ncc" 'org-roam-capture
    "ncj" 'org-roam-dailies-goto-today
    "ncd" 'org-roam-dailies-goto-date
+
    "en" 'flycheck-next-error
    "ep" 'flycheck-previous-error
-   "fr" 'find-file-in-project-by-selected
-   "ff" 'consult-fd
+
+   "ff" 'find-file-in-project-by-selected
+   "fr" 'consult-fd
+
    "ss" 'consult-ripgrep
    "so" 'consult-outline
    "sw" 'avy-goto-word-1
    "sl" 'avy-goto-line
+
    "pp" 'whaler
    "pr" 'whaler-populate-projects-directories)
 
@@ -216,7 +224,6 @@
    ("<C-M-right>" . 'sp-backward-slurp-sexp)
    ("<C-M-left>" . 'sp-backward-barf-sexp)
    ("M-(" . 'sp-wrap-round)
-   ("M-[" . 'sp-wrap-square)
    ("M-{" . 'sp-wrap-curly)
    ("C-M-<delete>" . 'sp-splice-sexp-killing-forward)
    ("C-M-<backspace>" . 'sp-splice-sexp-killing-backward)
@@ -234,7 +241,9 @@
 (use-package transient :ensure t)
 
 (use-package treemacs
-  :ensure t)
+  :ensure t
+  :bind
+  (("C-`" . 'treemacs-select-window)))
 
 (use-package treemacs-evil
   :after (treemacs evil)
@@ -282,7 +291,7 @@
   (setq whaler-directories-alist projects-path)
   (setq whaler-include-hidden-directories nil)
   (setq whaler-default-working-directory "~")
-  ;; (setq whaler-oneoff-directories-alist '("~/Nextcloud/journal"))
+  (setq whaler-oneoff-directories-alist '("~/Dropbox/journal"))
   (whaler-populate-projects-directories))
 
 (use-package which-key
@@ -303,3 +312,27 @@
 
 (use-package yasnippet-snippets
   :ensure t)
+
+(use-package perspective
+  :ensure t
+  :bind
+  ("C-x C-b" . persp-list-buffers)
+  :custom
+  (persp-mode-prefix-key (kbd "C-c M-p"))
+  :init
+  (persp-mode))
+
+(use-package treemacs-perspective
+  :after (treemacs perspective)
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
+
+(use-package copilot
+  :ensure (:host github :repo "balaji/copilot.el" :files ("*.el")))
+
+(use-package cody
+  :ensure (:host github :repo "sourcegraph/emacs-cody" :files ("*.el"))
+  :config
+  (setq
+   cody--access-token ""
+   cody--workspace-root "/home/balaji/projects/typescript-playground"))

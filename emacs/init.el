@@ -5,7 +5,7 @@
     (progn
       (setq projects-path '("~/projects"))
       (add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
-      (setq my-font "Monaco 14")
+      (setq my-font "Source Code Pro Light 14")
       )
   (if (eq system-type 'gnu/linux)
       ;;; linux
@@ -24,7 +24,7 @@
 (use-package better-defaults :ensure t)
 
 (add-to-list 'load-path "~/projects/dotfiles/emacs/modules/")
-(use-package vim-tab-bar)
+;; (use-package vim-tab-bar)
 (use-package emacs
   :custom
   (enable-recursive-minibuffers t)
@@ -55,11 +55,11 @@
     (if (display-graphic-p)
         (progn
           (set-frame-font my-font nil t)
-          (vim-tab-bar-mode 1)
+          ;; (vim-tab-bar-mode 1)
           )
-      (progn
-        (vim-tab-bar-mode 0)
-	)))
+      ;; (progn
+      ;;   (vim-tab-bar-mode 0))
+      ))
 
   (add-hook 'after-make-frame-functions
             (lambda (frame)

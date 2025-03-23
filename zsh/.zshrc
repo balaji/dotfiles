@@ -1,4 +1,5 @@
 HISTFILE=~/.histfile
+
 HISTSIZE=10000
 SAVEHIST=1000
 setopt autocd extendedglob nomatch notify
@@ -9,7 +10,7 @@ skip_global_compinit=1
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/git-prompt.zsh/git-prompt.zsh
-source ~/.zsh/git-prompt.zsh/examples/compact.zsh
+source ~/.zsh/git-prompt.zsh/examples/multiline.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # if [ "$TMUX" = "" ]; then tmux new -A -s main; fi 
@@ -45,3 +46,7 @@ case `uname` in
 esac
 
 [ -f "/home/balaji/.ghcup/env" ] && . "/home/balaji/.ghcup/env" # ghcup-env
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
