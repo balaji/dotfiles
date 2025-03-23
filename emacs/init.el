@@ -5,7 +5,7 @@
     (progn
       (setq projects-path '("~/projects"))
       (add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
-      (setq my-font "Monaco 14")
+      (setq my-font "Source Code Pro 14")
       )
   (if (eq system-type 'gnu/linux)
       ;;; linux
@@ -58,8 +58,7 @@
           ;; (vim-tab-bar-mode 1)
           )
       ;; (progn
-      ;;   (vim-tab-bar-mode 0)
-      ;;   )
+      ;;   (vim-tab-bar-mode 0))
       ))
 
   (add-hook 'after-make-frame-functions

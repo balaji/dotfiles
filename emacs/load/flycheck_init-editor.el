@@ -334,5 +334,5 @@
   :ensure (:host github :repo "sourcegraph/emacs-cody" :files ("*.el"))
   :config
   (setq
-   cody--access-token ""
+   cody--access-token "sgp_fd1b4edb60bf82b8_18ae74699265caba89b82352c6cfd3e1b5e86e71"
    cody--workspace-root "/home/balaji/projects/typescript-playground"))
