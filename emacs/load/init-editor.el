@@ -291,7 +291,7 @@
   (setq whaler-directories-alist projects-path)
   (setq whaler-include-hidden-directories nil)
   (setq whaler-default-working-directory "~")
-  ;; (setq whaler-oneoff-directories-alist '("~/Nextcloud/journal"))
+  (setq whaler-oneoff-directories-alist '("~/Dropbox/journal"))
   (whaler-populate-projects-directories))
 
 (use-package which-key

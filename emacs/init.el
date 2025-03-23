@@ -5,7 +5,7 @@
     (progn
       (setq projects-path '("~/projects"))
       (add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
-      (setq my-font "Source Code Pro 14")
+      (setq my-font "Source Code Pro Light 14")
       )
   (if (eq system-type 'gnu/linux)
       ;;; linux
