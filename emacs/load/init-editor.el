@@ -16,7 +16,7 @@
 (use-package consult
   :ensure t
   :bind
-  (("C-x b" . consult-buffer)
+  (("C-<tab>" . consult-buffer)
    ("C-s" . consult-line)
    ("C-x h" . consult-recent-file)))
 
@@ -124,13 +124,11 @@
 
    "tt" 'treemacs-add-and-display-current-project-exclusively
 
-   "nl" 'org-roam-buffer-toggle
-   "nf" 'org-roam-node-find
-   "ng" 'org-roam-graph
-   "ni" 'org-roam-node-insert
-   "ncc" 'org-roam-capture
-   "ncj" 'org-roam-dailies-goto-today
-   "ncd" 'org-roam-dailies-goto-date
+   "na" 'org-agenda-list
+   "nt" 'org-todo-list
+   "ncc" 'org-capture
+   "ncj" 'org-journal-new-entry
+   "ncd" 'org-journal-new-date-entry
 
    "en" 'flycheck-next-error
    "ep" 'flycheck-previous-error
