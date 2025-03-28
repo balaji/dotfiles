@@ -3,6 +3,10 @@ set $term footclient
 set $menu fuzzel
 output * bg $HOME/.backgrounds/ferrari.jpg fill
 output eDP-1 resolution 1920x1200 position 1920,0 scale 1.25
+output DP-1 resolution 2560x1440 position 2560,0 scale 1.25
+
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable
 
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
@@ -113,14 +117,14 @@ titlebar_padding 1
 titlebar_border_thickness 0
 
 exec {
-    # /usr/libexec/pam_kwallet_init
+    /usr/libexec/pam_kwallet_init
     foot --server
     firefox
     nm-applet
     blueman-applet
     nextcloud --background
     pasystray
-    # kwalletd6
+    kwalletd6
     dunst
     emacs --daemon
 }
