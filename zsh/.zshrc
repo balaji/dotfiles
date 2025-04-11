@@ -33,7 +33,6 @@ case `uname` in
     alias spotify="spotify --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
     alias 1password="1password --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
     alias steam="steam --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --unity-launch"
-    alias docker=podman
     alias e='emacsclient -c -a ""'
     export PATH="/home/balaji/bin:$PATH:/home/balaji/.local/share/JetBrains/Toolbox/scripts"
     export GTK_MODULES="unity-gtk-module"

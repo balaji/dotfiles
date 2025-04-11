@@ -4,7 +4,7 @@
   (setq
    org-startup-folded 'show2levels
    org-startup-align-all-tables t
-   ;; org-startup-indented t
+   org-startup-indented t
    org-auto-align-tags nil
    org-tags-column 0
    org-fold-catch-invisible-edits 'show-and-error

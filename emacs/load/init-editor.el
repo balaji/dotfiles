@@ -61,7 +61,7 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-(use-package erlang)
+;; (use-package erlang)
 
 (use-package evil
   :ensure t
