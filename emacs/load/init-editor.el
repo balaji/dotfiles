@@ -123,6 +123,7 @@
    "gg" 'perspective-map
 
    "tt" 'treemacs-add-and-display-current-project-exclusively
+   "td" 'treemacs
 
    "na" 'org-agenda-list
    "nt" 'org-todo-list
@@ -326,11 +327,8 @@
   :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package copilot
-  :ensure (:host github :repo "balaji/copilot.el" :files ("*.el")))
+  :ensure (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :bind (:map copilot-completion-map
+              ("TAB" . 'copilot-accept-completion)
+              ("<tab>" . 'copilot-accept-completion)))
 
-(use-package cody
-  :ensure (:host github :repo "sourcegraph/emacs-cody" :files ("*.el"))
-  :config
-  (setq
-   cody--access-token ""
-   cody--workspace-root "/home/balaji/projects/typescript-playground"))
