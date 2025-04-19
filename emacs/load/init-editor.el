@@ -290,7 +290,7 @@
   (setq whaler-directories-alist projects-path)
   (setq whaler-include-hidden-directories nil)
   (setq whaler-default-working-directory "~")
-  (setq whaler-oneoff-directories-alist '("~/Dropbox/journal"))
+  (setq whaler-oneoff-directories-alist '("~/Nextcloud/journal"))
   (whaler-populate-projects-directories))
 
 (use-package which-key
@@ -331,4 +331,3 @@
   :bind (:map copilot-completion-map
               ("TAB" . 'copilot-accept-completion)
               ("<tab>" . 'copilot-accept-completion)))
-

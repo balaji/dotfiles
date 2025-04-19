@@ -5,8 +5,8 @@ output * bg $HOME/.backgrounds/ferrari.jpg fill
 output eDP-1 resolution 1920x1200 position 1920,0 scale 1.25
 output DP-1 resolution 2560x1440 position 2560,0 scale 1.25
 
-bindswitch lid:on output eDP-1 disable
-bindswitch lid:off output eDP-1 enable
+# bindswitch lid:on output eDP-1 disable
+# bindswitch lid:off output eDP-1 enable
 
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \

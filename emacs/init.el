@@ -8,7 +8,7 @@
       (setq my-font "Source Code Pro 13")
       )
   (if (eq system-type 'gnu/linux)
-      ;;; linux
+      ;;; linux - Fedora only
       (progn
 	(setq projects-path '("~/projects"))
 	(add-to-list 'load-path "/usr/lib64/erlang/lib/tools-3.6/emacs")
