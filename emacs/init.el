@@ -1,4 +1,4 @@
-(load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el") 
+(load-file "~/projects/dotfiles/emacs/package-manager/straight.el") 
 
 (if (eq system-type 'darwin)
     ;;; mac osx
@@ -19,7 +19,7 @@
       (setq lsp-erlang-ls-server-path "c:/users/balaj/bin/erlang_ls.cmd")
       (add-to-list 'load-path "c:/users/balaj/scoop/apps/erlang/current/lib/tools-4.1.1/emacs")
       (setq projects-path '("~/projects"))
-      (setq my-font "Consolas 11")
+      (setq my-font "Source Code Pro 11")
       )))
 (use-package better-defaults :ensure t)
 
@@ -93,3 +93,15 @@
   ((rust-ts-mode python-ts-mode ruby-ts-mode typescript-ts-mode js-ts-mode) . 'lsp-deferred))
 
 (mapc 'load (file-expand-wildcards "~/projects/dotfiles/emacs/load/*.el"))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

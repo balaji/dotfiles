@@ -10,7 +10,7 @@
    org-fold-catch-invisible-edits 'show-and-error
    org-special-ctrl-a/e t
    org-insert-heading-respect-content t
-   org-directory "~/Dropbox/journal"
+   org-directory "~/Nextcloud/journal/notes"
    org-default-notes-file (concat org-directory "/notes.org")
    org-duration-format (quote h:mm)
    ;; Org styling, hide markup etc.
@@ -30,18 +30,20 @@
   :hook
   ('org-mode . (lambda() (smartparens-mode -1))))
 
-;; (use-package org-roam
-;;   :ensure t
-;;   :after (org org-roam-dailies vulpea)
-;;   :config
-;;   (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-;;   (setq org-roam-completion-everywhere t)
-;;   (org-roam-db-autosync-mode)
-;;   (require 'org-roam-protocol))
+(use-package org-roam
+  :ensure t
+  :after (org org-roam-dailies)
+  :config
+  (setq
+   org-roam-directory org-directory
+   org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag))
+   org-roam-completion-everywhere t)
+  (org-roam-db-autosync-mode)
+  (require 'org-roam-protocol))
 
-;; (use-package org-roam-ui
-;;   :after (org-roam)
-;;   :ensure t)
+(use-package org-roam-ui
+  :after (org-roam)
+  :ensure t)
 
 (use-package org-journal
   :ensure t

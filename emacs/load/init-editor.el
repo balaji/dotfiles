@@ -262,11 +262,11 @@
   :init
   (vertico-mode))
 
-(use-package vterm
-  :ensure t
-  :hook
-  ('vterm-mode . (lambda ()
-                   (display-line-numbers-mode -1))))
+;; (use-package vterm
+;;   :ensure t
+;;   :hook
+;;   ('vterm-mode . (lambda ()
+;;                    (display-line-numbers-mode -1))))
 
 (defun run-in-vterm (command)
   "Insert text of current line in vterm and execute."
@@ -290,7 +290,7 @@
   (setq whaler-directories-alist projects-path)
   (setq whaler-include-hidden-directories nil)
   (setq whaler-default-working-directory "~")
-  (setq whaler-oneoff-directories-alist '("~/Nextcloud/journal"))
+  (setq whaler-oneoff-directories-alist '("~/Nextcloud/journal/notes"))
   (whaler-populate-projects-directories))
 
 (use-package which-key
@@ -327,7 +327,7 @@
   :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package copilot
-  :ensure (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
   :bind (:map copilot-completion-map
               ("TAB" . 'copilot-accept-completion)
               ("<tab>" . 'copilot-accept-completion)))
