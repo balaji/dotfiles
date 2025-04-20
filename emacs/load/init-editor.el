@@ -130,6 +130,8 @@
    "ncc" 'org-capture
    "ncj" 'org-journal-new-entry
    "ncd" 'org-journal-new-date-entry
+   "nrf" 'org-roam-node-find
+   "nri" 'org-roam-node-insert
 
    "en" 'flycheck-next-error
    "ep" 'flycheck-previous-error
@@ -290,7 +292,7 @@
   (setq whaler-directories-alist projects-path)
   (setq whaler-include-hidden-directories nil)
   (setq whaler-default-working-directory "~")
-  (setq whaler-oneoff-directories-alist '("~/Nextcloud/journal/notes"))
+  (setq whaler-oneoff-directories-alist '("~/Nextcloud/notes"))
   (whaler-populate-projects-directories))
 
 (use-package which-key

@@ -10,7 +10,7 @@
    org-fold-catch-invisible-edits 'show-and-error
    org-special-ctrl-a/e t
    org-insert-heading-respect-content t
-   org-directory "~/Nextcloud/journal/notes"
+   org-directory "~/Nextcloud/notes"
    org-default-notes-file (concat org-directory "/notes.org")
    org-duration-format (quote h:mm)
    ;; Org styling, hide markup etc.
@@ -25,7 +25,9 @@
      " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
    org-agenda-current-time-string "◀── now ──────────────────────────────────"
    org-ellipsis "…"
-   org-agenda-files (list "notes.org"))
+   org-agenda-files (list "notes.org" "habits.org")
+   org-capture-templates
+   '(("p" "Plan" entry (file+headline org-default-notes-file "Tasks") "* TODO %i  %a\n  %?")))
   (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
   :hook
   ('org-mode . (lambda() (smartparens-mode -1))))
@@ -48,10 +50,14 @@
 (use-package org-journal
   :ensure t
   :custom
-  (org-journal-date-prefix "#+title: ")
-  (org-journal-file-format "%Y-%m-%d.org")
-  (org-journal-dir (concat org-directory "/daily"))
-  (org-journal-date-format "%A, %d %B %Y"))
+  (org-journal-file-format "%Y/W%V.org")
+  (org-journal-dir (concat org-directory "/journal"))
+  (org-journal-file-type 'weekly)
+  (org-journal-date-format "%A, %d %B %Y")
+  (org-journal-file-header "#+TITLE: Week %V, %Y")
+  (org-journal-date-prefix "* ")
+  (org-journal-time-prefix "** ")
+  )
 
 (use-package org-modern
   :ensure t
