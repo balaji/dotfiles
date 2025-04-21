@@ -1,18 +1,18 @@
-(load-file "~/projects/dotfiles/emacs/package-manager/straight.el") 
-
 (if (eq system-type 'darwin)
     ;;; mac osx
     (progn
       (setq projects-path '("~/projects"))
       (add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
       (setq my-font "Source Code Pro 13")
+      (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
       )
   (if (eq system-type 'gnu/linux)
       ;;; linux - Fedora only
       (progn
-	(setq projects-path '("~/projects"))
-	(add-to-list 'load-path "/usr/lib64/erlang/lib/tools-3.6/emacs")
+	      (setq projects-path '("~/projects"))
+	      (add-to-list 'load-path "/usr/lib64/erlang/lib/tools-3.6/emacs")
         (setq my-font "Source Code Pro 10")
+        (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
 	)
     ;;; windows
     (progn
@@ -20,6 +20,7 @@
       (add-to-list 'load-path "c:/users/balaj/scoop/apps/erlang/current/lib/tools-4.1.1/emacs")
       (setq projects-path '("~/projects"))
       (setq my-font "Source Code Pro 11")
+      (load-file "~/projects/dotfiles/emacs/package-manager/straight.el")
       )))
 (use-package better-defaults :ensure t)
 

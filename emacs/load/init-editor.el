@@ -329,7 +329,7 @@
   :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package copilot
-  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :ensure (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
   :bind (:map copilot-completion-map
               ("TAB" . 'copilot-accept-completion)
               ("<tab>" . 'copilot-accept-completion)))

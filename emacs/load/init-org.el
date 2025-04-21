@@ -25,7 +25,7 @@
      " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
    org-agenda-current-time-string "◀── now ──────────────────────────────────"
    org-ellipsis "…"
-   org-agenda-files (list "notes.org" "habits.org")
+   org-agenda-files (list "notes.org" "habits.org" "chores.org")
    org-capture-templates
    '(("p" "Plan" entry (file+headline org-default-notes-file "Tasks") "* TODO %i%?\nfile:%f")))
   (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
