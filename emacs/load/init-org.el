@@ -27,7 +27,7 @@
    org-ellipsis "…"
    org-agenda-files (list "notes.org" "habits.org")
    org-capture-templates
-   '(("p" "Plan" entry (file+headline org-default-notes-file "Tasks") "* TODO %i  %a\n  %?")))
+   '(("p" "Plan" entry (file+headline org-default-notes-file "Tasks") "* TODO %i%?\nfile:%f")))
   (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
   :hook
   ('org-mode . (lambda() (smartparens-mode -1))))
