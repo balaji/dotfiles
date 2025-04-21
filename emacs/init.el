@@ -40,7 +40,7 @@
   (setq vc-follow-symlinks t)
   (setq auto-save-visited-mode t)
   (auto-save-visited-mode +1)
-  (cua-mode t)
+  ;; (cua-mode t)
   (recentf-mode t)
   (global-display-line-numbers-mode t)
   (add-to-list 'default-frame-alist '(fullscreen . maximized))

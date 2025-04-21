@@ -130,8 +130,8 @@
    "ncc" 'org-capture
    "ncj" 'org-journal-new-entry
    "ncd" 'org-journal-new-date-entry
-   "nrf" 'org-roam-node-find
-   "nri" 'org-roam-node-insert
+   "ncf" 'org-roam-node-find
+   "nci" 'org-roam-node-insert
 
    "en" 'flycheck-next-error
    "ep" 'flycheck-previous-error
