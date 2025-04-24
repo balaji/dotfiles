@@ -26,8 +26,10 @@
    org-agenda-current-time-string "◀── now ──────────────────────────────────"
    org-ellipsis "…"
    org-agenda-files (list "notes.org" "habits.org" "chores.org")
-   org-capture-templates
-   '(("p" "Plan" entry (file+headline org-default-notes-file "Tasks") "* TODO %i%?\nfile:%f")))
+   ;; org-capture-templates
+   ;; '(("p" "Plan" entry (file+headline org-default-notes-file "Tasks") "* TODO %i%?\n%a\n[[file:%f]]")
+   ;;   ("t" "Todo" entry (file+headline org-default-notes-file "Tasks") "* TODO %?\n  %i\n  %a"))
+   )
   (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
   :hook
   ('org-mode . (lambda() (smartparens-mode -1))))

@@ -165,13 +165,18 @@
   :ensure t
   :after (lsp-mode))
 
+(use-package pet
+  :ensure t
+  :config
+  (add-hook 'python-base-mode-hook 'pet-mode -10))
+
 (use-package lsp-pyright
   :ensure t
   :after (lsp-mode)
   :custom (lsp-pyright-langserver-command "pyright")
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp-deferred))))
+  :hook (python-base-mode . (lambda ()
+                              (require 'lsp-pyright)
+                              (lsp-deferred))))
 
 (use-package magit :ensure t)
 
@@ -214,7 +219,7 @@
 (use-package ruff-format
   :ensure t
   :hook
-  ((python-mode) . 'ruff-format-on-save-mode))
+  ((python-base-mode) . 'ruff-format-on-save-mode))
 
 (use-package smartparens
   :ensure t
@@ -328,8 +333,8 @@
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
 
-(use-package copilot
-  :ensure (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
-  :bind (:map copilot-completion-map
-              ("TAB" . 'copilot-accept-completion)
-              ("<tab>" . 'copilot-accept-completion)))
+;; (use-package copilot
+;;   :ensure (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+;;   :bind (:map copilot-completion-map
+;;               ("TAB" . 'copilot-accept-completion)
+;;               ("<tab>" . 'copilot-accept-completion)))
