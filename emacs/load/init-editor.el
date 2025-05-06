@@ -16,7 +16,7 @@
 (use-package consult
   :ensure t
   :bind
-  (("C-<tab>" . consult-buffer)
+  (("C-x b" . consult-buffer)
    ("C-s" . consult-line)
    ("C-x h" . consult-recent-file)))
 
@@ -34,12 +34,16 @@
 
 (use-package doom-themes
   :ensure t
-  :config (load-theme 'doom-gruvbox t))
+  :config (load-theme 'tsdh-dark t))
 
 (use-package doom-modeline
   :ensure t
+  )
+
+(use-package company
+  :ensure t
   :config
-  (doom-modeline-mode))
+  (global-company-mode))
 
 (use-package embark
   :ensure t
@@ -71,6 +75,9 @@
   (setq evil-want-fine-undo t)
   (setq evil-want-C-u-scroll t)
   (setq evil-undo-system 'undo-redo)
+  :hook
+  (evil-insert-state-entry . (lambda () (send-string-to-terminal "\033[5 q")))
+  (evil-insert-state-exit . (lambda () (send-string-to-terminal "\033[2 q")))
   :config
   (evil-mode t))
 
