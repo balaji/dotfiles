@@ -30,15 +30,15 @@
   (global-corfu-mode))
 
 (use-package modus-themes
-  :ensure t)
+  :ensure t
+  :config
+  (load-theme 'modus-vivendi-tritanopia t))
 
 (use-package doom-themes
-  :ensure t
-  :config (load-theme 'tsdh-dark t))
+  :ensure t)
 
 (use-package doom-modeline
-  :ensure t
-  )
+  :ensure t)
 
 (use-package company
   :ensure t
