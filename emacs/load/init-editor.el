@@ -37,6 +37,13 @@
 (use-package doom-themes
   :ensure t)
 
+(use-package mood-line
+  :ensure t
+  :config
+  (mood-line-mode)
+  :custom
+  (mood-line-glyph-alist mood-line-glyphs-fira-code))
+
 (use-package doom-modeline
   :ensure t)
 
@@ -276,11 +283,11 @@
   :init
   (vertico-mode))
 
-;; (use-package vterm
-;;   :ensure t
-;;   :hook
-;;   ('vterm-mode . (lambda ()
-;;                    (display-line-numbers-mode -1))))
+(use-package vterm
+  :ensure t
+  :hook
+  (vterm-mode . (lambda ()
+                   (display-line-numbers-mode -1))))
 
 (defun run-in-vterm (command)
   "Insert text of current line in vterm and execute."
