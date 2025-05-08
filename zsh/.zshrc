@@ -29,17 +29,17 @@ alias vim=nvim
 
 case `uname` in
     Linux)
-    alias code="code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    alias spotify="spotify --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    alias 1password="1password --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    alias steam="steam --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    alias obsidian="obsidian --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    alias google-chrome="google-chrome --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
+    # alias code="code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
+    # alias spotify="spotify --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
+    # alias 1password="1password --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
+    # alias steam="steam --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
+    # alias obsidian="obsidian --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
+    # alias google-chrome="google-chrome --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
     alias e='emacsclient -c -a ""'
-    export PATH="/home/balaji/.local/bin:$PATH:/home/balaji/.local/share/JetBrains/Toolbox/scripts"
-    export GTK_MODULES="unity-gtk-module"
-    export SAL_USE_VCLPLUGIN=gtk
-    export ELECTRON_OZONE_PLATFORM_HINT=wayland
+    export PATH="/home/balaji/.local/bin:$PATH"
+    # export GTK_MODULES="unity-gtk-module"
+    # export SAL_USE_VCLPLUGIN=gtk
+    # export ELECTRON_OZONE_PLATFORM_HINT=wayland
     ;;
     Darwin)
         alias e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
