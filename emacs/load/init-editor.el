@@ -20,19 +20,24 @@
    ("C-s" . consult-line)
    ("C-x h" . consult-recent-file)))
 
-(use-package corfu
+(use-package company
   :ensure t
-  :custom
-  (corfu-auto t)
-  :bind
-  (:map corfu-map ("SPC" . corfu-insert-separator))
   :init
-  (defun my/lsp-mode-setup-completion ()
-    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-          '(orderless))) ;; Configure orderless
-  (global-corfu-mode)
-  :hook
-  (lsp-completion-mode . my/lsp-mode-setup-completion))
+  (global-company-mode))
+
+;; (use-package corfu
+;;   :ensure t
+;;   :custom
+;;   (corfu-auto t)
+;;   :bind
+;;   (:map corfu-map ("SPC" . corfu-insert-separator))
+;;   :init
+;;   (defun my/lsp-mode-setup-completion ()
+;;     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+;;           '(orderless))) ;; Configure orderless
+;;   (global-corfu-mode)
+;;   :hook
+;;   (lsp-completion-mode . my/lsp-mode-setup-completion))
 
 (use-package doom-themes
   :ensure t

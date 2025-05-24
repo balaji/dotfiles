@@ -82,7 +82,7 @@
         ;; lsp-enable-file-watchers nil
         lsp-file-watch-threshold 6000
         lsp-disabled-clients '(semgrep-ls ruff)
-        lsp-completion-provider :none   ; corfu
+        ;; lsp-completion-provider :none   ; corfu
         lsp-signature-auto-activate nil
         ;; lsp-copilot-enabled t
         ;; lsp-copilot-applicable-fn (lambda (file-name major-mode) (eq major-mode python-ts-mode))
