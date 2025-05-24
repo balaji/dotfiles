@@ -79,9 +79,11 @@
   :hook ((lsp-mode . lsp-enable-which-key-integration))
   :config
   (setq lsp-log-io nil
-        lsp-enable-file-watchers nil
+        ;; lsp-enable-file-watchers nil
         lsp-file-watch-threshold 6000
         lsp-disabled-clients '(semgrep-ls ruff)
+        ;; lsp-copilot-enabled t
+        ;; lsp-copilot-applicable-fn (lambda (file-name major-mode) (eq major-mode python-ts-mode))
         )
   :bind
   (("C-c r" . xref-find-references)

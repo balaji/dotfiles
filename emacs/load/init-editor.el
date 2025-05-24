@@ -158,8 +158,8 @@
    "en" 'flycheck-next-error
    "ep" 'flycheck-previous-error
 
-   "ff" 'find-file-in-project-by-selected
-   "fr" 'consult-fd
+   "fr" 'find-file-in-project-by-selected
+   "ff" 'consult-fd
 
    "ss" 'consult-ripgrep
    "so" 'consult-outline
@@ -195,7 +195,8 @@
 (use-package lsp-pyright
   :ensure t
   :after (lsp-mode)
-  :custom (lsp-pyright-langserver-command "pyright")
+  :config
+  (setq lsp-pyright-multi-root nil)
   :hook (python-base-mode . (lambda ()
                               (require 'lsp-pyright)
                               (lsp-deferred))))
@@ -292,10 +293,13 @@
   (vertico-mode))
 
 (use-package vterm
+  :after popper
   :ensure t
+  :custom
+  (vterm--internal popper-display-function)
   :hook
   (vterm-mode . (lambda ()
-                   (display-line-numbers-mode -1))))
+                  (display-line-numbers-mode -1))))
 
 (defun run-in-vterm (command)
   "Insert text of current line in vterm and execute."
@@ -360,3 +364,20 @@
   :bind (:map copilot-completion-map
               ("TAB" . 'copilot-accept-completion)
               ("<tab>" . 'copilot-accept-completion)))
+
+(use-package popper
+  :ensure t
+  :bind (("C-`"   . popper-toggle)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :init
+  (setq popper-reference-buffers
+        '("\\*Messages\\*"
+          "Output\\*$"
+          "\\*Async Shell Command\\*"
+          help-mode
+          vterm-mode
+          inferior-python-mode
+          compilation-mode))
+  (popper-mode +1)
+  (popper-echo-mode +1))
