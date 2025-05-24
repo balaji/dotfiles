@@ -43,13 +43,15 @@
 
 (use-package mood-line
   :ensure t
-  :config
-  (mood-line-mode)
+  ;; :config
+  ;; (mood-line-mode)
   :custom
   (mood-line-glyph-alist mood-line-glyphs-fira-code))
 
 (use-package doom-modeline
-  :ensure t)
+  :ensure t
+  :config
+  (doom-modeline-mode))
 
 (use-package company
   :ensure t
@@ -139,6 +141,8 @@
    :non-normal-prefix "M-SPC"
    :prefix "SPC"
    "gg" 'perspective-map
+
+   "ww" 'ace-window
 
    "tt" 'treemacs-add-and-display-current-project-exclusively
    "td" 'treemacs
@@ -351,8 +355,8 @@
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
 
-;; (use-package copilot
-;;   :ensure (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
-;;   :bind (:map copilot-completion-map
-;;               ("TAB" . 'copilot-accept-completion)
-;;               ("<tab>" . 'copilot-accept-completion)))
+(use-package copilot
+  :ensure (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :bind (:map copilot-completion-map
+              ("TAB" . 'copilot-accept-completion)
+              ("<tab>" . 'copilot-accept-completion)))

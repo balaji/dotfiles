@@ -10,7 +10,7 @@
       (progn
 	      (setq projects-path '("~/projects"))
 	      (add-to-list 'load-path "/usr/lib64/erlang/lib/tools-3.6/emacs")
-              (setq my-font "Source Code Pro 9")
+              (setq my-font "Source Code Pro 10")
         (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
 	)
     ;;; windows

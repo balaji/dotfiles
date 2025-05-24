@@ -67,3 +67,8 @@
   :config
   (setq org-modern-star 'replace)
   (global-org-modern-mode))
+
+(use-package org-appear
+  :ensure t
+  :hook
+  (org-mode . org-appear-mode))

@@ -37,6 +37,7 @@ case `uname` in
     # alias google-chrome="google-chrome --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
     alias e='emacsclient -c -a ""'
     export PATH="/home/balaji/.local/bin:$PATH"
+    alias ls='ls --color'
     # export GTK_MODULES="unity-gtk-module"
     # export SAL_USE_VCLPLUGIN=gtk
     # export ELECTRON_OZONE_PLATFORM_HINT=wayland
