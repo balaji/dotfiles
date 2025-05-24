@@ -21,25 +21,29 @@
    ("C-x h" . consult-recent-file)))
 
 (use-package corfu
+  :ensure t
   :custom
   (corfu-auto t)
-  :ensure t
   :bind
   (:map corfu-map ("SPC" . corfu-insert-separator))
   :init
-  (global-corfu-mode))
-
-(use-package modus-themes
-  :ensure t
-  ;; :config
-  ;; (load-theme 'modus-vivendi-tritanopia t)
-  )
+  (defun my/lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(orderless))) ;; Configure orderless
+  (global-corfu-mode)
+  :hook
+  (lsp-completion-mode . my/lsp-mode-setup-completion))
 
 (use-package doom-themes
   :ensure t
   :config
   (load-theme 'doom-one t)
   )
+
+(use-package doom-modeline
+  :ensure t
+  :config
+  (doom-modeline-mode))
 
 (use-package mood-line
   :ensure t
@@ -48,15 +52,11 @@
   :custom
   (mood-line-glyph-alist mood-line-glyphs-fira-code))
 
-(use-package doom-modeline
+(use-package modus-themes
   :ensure t
-  :config
-  (doom-modeline-mode))
-
-(use-package company
-  :ensure t
-  :config
-  (global-company-mode))
+  ;; :config
+  ;; (load-theme 'modus-vivendi-tritanopia t)
+  )
 
 (use-package embark
   :ensure t

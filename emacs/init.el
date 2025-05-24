@@ -10,7 +10,7 @@
       (progn
 	      (setq projects-path '("~/projects"))
 	      (add-to-list 'load-path "/usr/lib64/erlang/lib/tools-3.6/emacs")
-              (setq my-font "Source Code Pro 10")
+              (setq my-font "Source Code Pro Medium 10")
         (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
 	)
     ;;; windows
@@ -82,6 +82,8 @@
         ;; lsp-enable-file-watchers nil
         lsp-file-watch-threshold 6000
         lsp-disabled-clients '(semgrep-ls ruff)
+        lsp-completion-provider :none   ; corfu
+        lsp-signature-auto-activate nil
         ;; lsp-copilot-enabled t
         ;; lsp-copilot-applicable-fn (lambda (file-name major-mode) (eq major-mode python-ts-mode))
         )

@@ -13,7 +13,7 @@ source ~/.zsh/git-prompt.zsh/git-prompt.zsh
 source ~/.zsh/git-prompt.zsh/examples/multiline.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# if [ "$TMUX" = "" ]; then tmux new -A -s main; fi 
+if [ "$TMUX" = "" ]; then tmux new -A -s main; fi
 
 alias g='git'
 alias gpl='git pull'
