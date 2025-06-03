@@ -3,7 +3,7 @@
     (progn
       (setq projects-path '("~/projects"))
       (add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
-      (setq my-font "Source Code Pro 13")
+      (setq my-font "Source Code Pro Medium 14")
       (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
       )
   (if (eq system-type 'gnu/linux)
@@ -18,7 +18,7 @@
       (setq lsp-erlang-ls-server-path "c:/users/balaj/bin/erlang_ls.cmd")
       (add-to-list 'load-path "c:/users/balaj/scoop/apps/erlang/current/lib/tools-4.1.1/emacs")
       (setq projects-path '("~/projects"))
-      (setq my-font "Source Code Pro 11")
+      (setq my-font "Source Code Pro Medium 11")
       (load-file "~/projects/dotfiles/emacs/package-manager/straight.el")
       )))
 (use-package better-defaults :ensure t)
@@ -38,6 +38,7 @@
   (setq inhibit-startup-screen 1)
   (setq vc-follow-symlinks t)
   (setq auto-save-visited-mode t)
+  (setq tab-width 4)
   (auto-save-visited-mode +1)
   ;; (cua-mode t)
   (recentf-mode t)
@@ -85,7 +86,7 @@
         ;; lsp-completion-provider :none   ; corfu
         lsp-signature-auto-activate nil
         ;; lsp-copilot-enabled t
-        ;; lsp-copilot-applicable-fn (lambda (file-name major-mode) (eq major-mode python-ts-mode))
+        ;; lsp-copilot-applicable-fn (lambda (file-name major-mode) (eq major-mode 'python-ts-mode))
         )
   :bind
   (("C-c r" . xref-find-references)

@@ -386,3 +386,9 @@
           compilation-mode))
   (popper-mode +1)
   (popper-echo-mode +1))
+
+(use-package dap-mode :ensure t)
+(use-package dap-python
+  :after dap-mode
+  :init
+  (setq dap-python-debugger 'debugpy))
