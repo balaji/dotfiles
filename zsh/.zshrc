@@ -6,6 +6,7 @@ setopt autocd extendedglob nomatch notify
 bindkey -e
 zstyle :compinstall filename '~/.zshrc'
 skip_global_compinit=1
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
 # End of lines added by compinstall
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -26,6 +27,7 @@ alias gr='git rm'
 alias gfu='git fetch upstream'
 alias r3=rebar3
 alias vim=nvim
+alias ls='ls --color=auto'
 
 case `uname` in
     Linux)

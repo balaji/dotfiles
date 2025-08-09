@@ -392,3 +392,6 @@
   :after dap-mode
   :init
   (setq dap-python-debugger 'debugpy))
+
+(use-package gptel
+  :ensure t)

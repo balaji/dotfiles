@@ -1,5 +1,6 @@
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/balaji/.lmstudio/bin"
+# End of LM Studio CLI section
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+. "$HOME/.cargo/env"
