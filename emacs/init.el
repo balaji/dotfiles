@@ -19,7 +19,7 @@
       (add-to-list 'load-path "c:/users/balaj/scoop/apps/erlang/current/lib/tools-4.1.1/emacs")
       (setq projects-path '("~/projects"))
       (setq my-font "Source Code Pro Medium 11")
-      (load-file "~/projects/dotfiles/emacs/package-manager/straight.el")
+      (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
       )))
 (use-package better-defaults :ensure t)
 
@@ -36,6 +36,7 @@
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
   (setq gc-cons-threshold 100000000)
   (setq inhibit-startup-screen 1)
+  (setq initial-scratch-message "")
   (setq vc-follow-symlinks t)
   (setq auto-save-visited-mode t)
   (setq tab-width 4)

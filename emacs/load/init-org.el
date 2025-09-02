@@ -11,7 +11,6 @@
    org-special-ctrl-a/e t
    org-insert-heading-respect-content t
    org-directory "~/Nextcloud/notes"
-   org-default-notes-file (concat org-directory "/notes.org")
    org-duration-format (quote h:mm)
    ;; Org styling, hide markup etc.
    org-hide-emphasis-markers t
@@ -25,7 +24,7 @@
      " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
    org-agenda-current-time-string "◀── now ──────────────────────────────────"
    org-ellipsis "…"
-   org-agenda-files (list "notes.org" "habits.org" "chores.org")
+   org-agenda-files '("~/Nextcloud/notes")
    ;; org-capture-templates
    ;; '(("p" "Plan" entry (file+headline org-default-notes-file "Tasks") "* TODO %i%?\n%a\n[[file:%f]]")
    ;;   ("t" "Todo" entry (file+headline org-default-notes-file "Tasks") "* TODO %?\n  %i\n  %a"))

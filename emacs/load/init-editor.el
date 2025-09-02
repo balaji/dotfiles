@@ -297,14 +297,14 @@
   :init
   (vertico-mode))
 
-(use-package vterm
-  :after popper
-  :ensure t
-  :custom
-  (vterm--internal popper-display-function)
-  :hook
-  (vterm-mode . (lambda ()
-                  (display-line-numbers-mode -1))))
+;; (use-package vterm
+;;   :after popper
+;;   :ensure t
+;;   :custom
+;;   (vterm--internal popper-display-function)
+;;   :hook
+;;   (vterm-mode . (lambda ()
+;;                   (display-line-numbers-mode -1))))
 
 (defun run-in-vterm (command)
   "Insert text of current line in vterm and execute."
@@ -387,11 +387,11 @@
   (popper-mode +1)
   (popper-echo-mode +1))
 
-(use-package dap-mode :ensure t)
-(use-package dap-python
-  :after dap-mode
-  :init
-  (setq dap-python-debugger 'debugpy))
+;; (use-package dap-mode :ensure t)
+;; (use-package dap-python
+;;   :after dap-mode
+;;   :init
+;;   (setq dap-python-debugger 'debugpy))
 
 (use-package gptel
   :ensure t)
