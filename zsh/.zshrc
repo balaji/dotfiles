@@ -44,6 +44,7 @@ case `uname` in
     # export GTK_MODULES="unity-gtk-module"
     # export SAL_USE_VCLPLUGIN=gtk
     # export ELECTRON_OZONE_PLATFORM_HINT=wayland
+    alias e="emacsclient -nw"
     ;;
     Darwin)
         alias e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
