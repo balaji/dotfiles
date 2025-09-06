@@ -25,20 +25,6 @@
   :init
   (global-company-mode))
 
-;; (use-package corfu
-;;   :ensure t
-;;   :custom
-;;   (corfu-auto t)
-;;   :bind
-;;   (:map corfu-map ("SPC" . corfu-insert-separator))
-;;   :init
-;;   (defun my/lsp-mode-setup-completion ()
-;;     (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-;;           '(orderless))) ;; Configure orderless
-;;   (global-corfu-mode)
-;;   :hook
-;;   (lsp-completion-mode . my/lsp-mode-setup-completion))
-
 (use-package doom-themes
   :ensure t
   :config
@@ -49,19 +35,6 @@
   :ensure t
   :config
   (doom-modeline-mode))
-
-(use-package mood-line
-  :ensure t
-  ;; :config
-  ;; (mood-line-mode)
-  :custom
-  (mood-line-glyph-alist mood-line-glyphs-fira-code))
-
-(use-package modus-themes
-  :ensure t
-  ;; :config
-  ;; (load-theme 'modus-vivendi-tritanopia t)
-  )
 
 (use-package embark
   :ensure t
@@ -297,14 +270,14 @@
   :init
   (vertico-mode))
 
-;; (use-package vterm
-;;   :after popper
-;;   :ensure t
-;;   :custom
-;;   (vterm--internal popper-display-function)
-;;   :hook
-;;   (vterm-mode . (lambda ()
-;;                   (display-line-numbers-mode -1))))
+(use-package vterm
+  :after popper
+  :ensure t
+  :custom
+  (vterm--internal popper-display-function)
+  :hook
+  (vterm-mode . (lambda ()
+                  (display-line-numbers-mode -1))))
 
 (defun run-in-vterm (command)
   "Insert text of current line in vterm and execute."
@@ -363,12 +336,6 @@
   :after (treemacs perspective)
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
-
-(use-package copilot
-  :ensure (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
-  :bind (:map copilot-completion-map
-              ("TAB" . 'copilot-accept-completion)
-              ("<tab>" . 'copilot-accept-completion)))
 
 (use-package popper
   :ensure t
