@@ -3,7 +3,7 @@
     (progn
       (setq projects-path '("~/projects"))
       (add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
-      (setq my-font "Source Code Pro Medium 14")
+      (setq my-font "Source Code Pro 14")
       (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
       )
   (if (eq system-type 'gnu/linux)
@@ -41,7 +41,8 @@
   (setq auto-save-visited-mode t)
   (setq tab-width 4)
   (auto-save-visited-mode +1)
-  ;; (cua-mode t)
+  (cua-mode t)
+  (desktop-save-mode t)
   (recentf-mode t)
   (global-display-line-numbers-mode t)
   ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))

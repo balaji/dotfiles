@@ -28,8 +28,12 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-one t)
+  (load-theme 'doom-solarized-light t)
   )
+
+;; (use-package solarized-theme :ensure t
+;;   :config
+;;   (load-theme 'solarized-light t))
 
 (use-package doom-modeline
   :ensure t

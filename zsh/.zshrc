@@ -38,16 +38,14 @@ case `uname` in
     # alias steam="steam --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
     # alias obsidian="obsidian --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
     # alias google-chrome="google-chrome --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    alias e='emacsclient -c -a ""'
     export PATH="/home/balaji/.local/bin:$PATH"
     alias ls='ls --color'
     # export GTK_MODULES="unity-gtk-module"
     # export SAL_USE_VCLPLUGIN=gtk
     # export ELECTRON_OZONE_PLATFORM_HINT=wayland
-    alias e="emacsclient -nw"
+    alias e='emacsclient -c -a ""'
     ;;
     Darwin)
-        alias e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
-        alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+        alias e='emacsclient -c -a ""'
     ;;
 esac

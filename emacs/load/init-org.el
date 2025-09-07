@@ -25,6 +25,8 @@
    org-agenda-current-time-string "◀── now ──────────────────────────────────"
    org-ellipsis "…"
    org-agenda-files '("~/Documents/notes")
+   org-refile-targets '((nil :maxlevel . 1)
+                        (org-agenda-files :maxlevel . 1))
    ;; org-capture-templates
    ;; '(("p" "Plan" entry (file+headline org-default-notes-file "Tasks") "* TODO %i%?\n%a\n[[file:%f]]")
    ;;   ("t" "Todo" entry (file+headline org-default-notes-file "Tasks") "* TODO %?\n  %i\n  %a"))
@@ -44,9 +46,9 @@
   (org-roam-db-autosync-mode)
   (require 'org-roam-protocol))
 
-(use-package org-roam-ui
-  :after (org-roam)
-  :ensure t)
+;; (use-package org-roam-ui
+;;   :after (org-roam)
+;;   :ensure t)
 
 (use-package org-journal
   :ensure t
