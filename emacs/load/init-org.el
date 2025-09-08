@@ -10,7 +10,7 @@
    org-fold-catch-invisible-edits 'show-and-error
    org-special-ctrl-a/e t
    org-insert-heading-respect-content t
-   org-directory "~/Documents/notes"
+   org-directory "~/projects/notes"
    org-duration-format (quote h:mm)
    ;; Org styling, hide markup etc.
    org-hide-emphasis-markers t
@@ -24,7 +24,7 @@
      " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
    org-agenda-current-time-string "◀── now ──────────────────────────────────"
    org-ellipsis "…"
-   org-agenda-files '("~/Documents/notes")
+   org-agenda-files '("~/projects/notes")
    org-refile-targets '((nil :maxlevel . 1)
                         (org-agenda-files :maxlevel . 1))
    ;; org-capture-templates

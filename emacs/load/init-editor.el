@@ -305,7 +305,6 @@
   (setq whaler-directories-alist projects-path)
   (setq whaler-include-hidden-directories nil)
   (setq whaler-default-working-directory "~")
-  (setq whaler-oneoff-directories-alist '("~/Documents/notes"))
   (whaler-populate-projects-directories))
 
 (use-package which-key
