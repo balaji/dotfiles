@@ -10,9 +10,9 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 # End of lines added by compinstall
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source ~/.zsh/git-prompt.zsh/git-prompt.zsh
-# source ~/.zsh/git-prompt.zsh/examples/pure.zsh
-PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+source ~/.zsh/git-prompt.zsh/git-prompt.zsh
+source ~/.zsh/git-prompt.zsh/examples/pure.zsh
+# PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 if [ "$TMUX" = "" ]; then tmux new -A -s main; fi
@@ -49,3 +49,7 @@ case `uname` in
         alias e='emacsclient -c -a ""'
     ;;
 esac
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/balaji/.lmstudio/bin"
+# End of LM Studio CLI section

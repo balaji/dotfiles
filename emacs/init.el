@@ -3,7 +3,7 @@
     (progn
       (setq projects-path '("~/projects"))
       (add-to-list 'load-path "/opt/homebrew/lib/erlang/lib/tools-4.1.1/emacs")
-      (setq my-font "Source Code Pro 14")
+      (setq my-font "Source Code Pro 12")
       (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
       )
   (if (eq system-type 'gnu/linux)

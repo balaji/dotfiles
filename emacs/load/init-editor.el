@@ -25,15 +25,20 @@
   :init
   (global-company-mode))
 
-(use-package doom-themes
-  :ensure t
-  :config
-  (load-theme 'doom-solarized-light t)
-  )
+;; (use-package doom-themes
+;;   :ensure t
+;;   :config
+;;   (load-theme 'doom-solarized-dark t)
+;;   )
 
 ;; (use-package solarized-theme :ensure t
 ;;   :config
 ;;   (load-theme 'solarized-light t))
+
+(use-package gruvbox-theme
+  :ensure t
+  :config
+  (load-theme 'gruvbox-light-medium t))
 
 (use-package doom-modeline
   :ensure t
