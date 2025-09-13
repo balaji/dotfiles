@@ -65,8 +65,6 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-;; (use-package erlang)
-
 (use-package evil
   :ensure t
   :init
@@ -209,7 +207,7 @@
 (use-package rainbow-delimiters
   :ensure t
   :hook
-  ((prog-mode emacs-lisp-mode lisp-mode erlang-mode) . rainbow-delimiters-mode)
+  ((prog-mode emacs-lisp-mode lisp-mode) . rainbow-delimiters-mode)
   :config
   (rainbow-delimiters-mode))
 
@@ -222,9 +220,9 @@
   (add-hook 'ruby-mode-hook 'my-ruby-mode-hook))
 
 (use-package rust-mode
+  :ensure t
   :init
-  (setq rust-format-on-save t)
-  :ensure t)
+  (setq rust-format-on-save t))
 
 (use-package ruff-format
   :ensure t
@@ -370,3 +368,5 @@
 
 (use-package gptel
   :ensure t)
+
+(use-package compat :ensure t)

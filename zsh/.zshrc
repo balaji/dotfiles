@@ -53,3 +53,5 @@ esac
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/balaji/.lmstudio/bin"
 # End of LM Studio CLI section
+
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
