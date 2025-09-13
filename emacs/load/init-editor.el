@@ -38,27 +38,27 @@
 (use-package gruvbox-theme
   :ensure t
   :config
-  (load-theme 'gruvbox-light-medium t))
+  (load-theme 'gruvbox-dark-medium t))
 
 (use-package doom-modeline
   :ensure t
   :config
   (doom-modeline-mode))
 
-(use-package embark
-  :ensure t
-  :bind
-  (("C-'" . embark-act)
-   ("C-;" . embark-dwim)
-   ("C-h b" . embark-bindings))
-  :init
-  (setq prefix-help-command #'embark-prefix-help-command)
-  :config
-  ;; Hide the mode line of the Embark live/completions buffers
-  (add-to-list 'display-buffer-alist
-               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                 nil
-                 (window-parameters (mode-line-format . none)))))
+;; (use-package embark
+;;   :ensure t
+;;   :bind
+;;   (("C-'" . embark-act)
+;;    ("C-;" . embark-dwim)
+;;    ("C-h b" . embark-bindings))
+;;   :init
+;;   (setq prefix-help-command #'embark-prefix-help-command)
+;;   :config
+;;   ;; Hide the mode line of the Embark live/completions buffers
+;;   (add-to-list 'display-buffer-alist
+;;                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+;;                  nil
+;;                  (window-parameters (mode-line-format . none)))))
 
 (use-package embark-consult
   :ensure t
@@ -317,19 +317,19 @@
   :config
   (which-key-mode))
 
-(use-package yasnippet
-  :ensure t
-  :init
-  (yas-global-mode 1)
-  :hook
-  ((markdown-mode) . (lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
-  :config
-  (setq yas-snippet-dirs
-        (append yas-snippet-dirs '("~/projects/dotfiles/emacs/custom-snippets")))
-  (yas-reload-all))
+;; (use-package yasnippet
+;;   :ensure t
+;;   :init
+;;   (yas-global-mode 1)
+;;   :hook
+;;   ((markdown-mode) . (lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
+;;   :config
+;;   (setq yas-snippet-dirs
+;;         (append yas-snippet-dirs '("~/projects/dotfiles/emacs/custom-snippets")))
+;;   (yas-reload-all))
 
-(use-package yasnippet-snippets
-  :ensure t)
+;; (use-package yasnippet-snippets
+;;   :ensure t)
 
 (use-package perspective
   :ensure t
