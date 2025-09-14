@@ -55,3 +55,5 @@ export PATH="$PATH:/Users/balaji/.lmstudio/bin"
 # End of LM Studio CLI section
 
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
+export VISUAL="emacsclient -c -nw -a ''"
+export EDITOR="emacsclient -c -nw -a ''"

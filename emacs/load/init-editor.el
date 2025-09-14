@@ -25,16 +25,6 @@
   :init
   (global-company-mode))
 
-;; (use-package doom-themes
-;;   :ensure t
-;;   :config
-;;   (load-theme 'doom-solarized-dark t)
-;;   )
-
-;; (use-package solarized-theme :ensure t
-;;   :config
-;;   (load-theme 'solarized-light t))
-
 (use-package gruvbox-theme
   :ensure t
   :config
@@ -44,26 +34,6 @@
   :ensure t
   :config
   (doom-modeline-mode))
-
-;; (use-package embark
-;;   :ensure t
-;;   :bind
-;;   (("C-'" . embark-act)
-;;    ("C-;" . embark-dwim)
-;;    ("C-h b" . embark-bindings))
-;;   :init
-;;   (setq prefix-help-command #'embark-prefix-help-command)
-;;   :config
-;;   ;; Hide the mode line of the Embark live/completions buffers
-;;   (add-to-list 'display-buffer-alist
-;;                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-;;                  nil
-;;                  (window-parameters (mode-line-format . none)))))
-
-(use-package embark-consult
-  :ensure t
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package evil
   :ensure t
@@ -103,18 +73,6 @@
   (setq ffip-match-path-instead-of-filename t)
   (setq ffip-use-rust-fd t))
 
-(use-package flycheck
-  :ensure t
-  :bind
-  (("<f2>" . flycheck-list-errors))
-  :init (global-flycheck-mode))
-
-(use-package flycheck-rust
-  :after (flycheck rust-mode)
-  :ensure t
-  :hook
-  ('flycheck-mode . 'flycheck-rust-setup))
-
 (use-package general
   :ensure t
   :config
@@ -140,8 +98,8 @@
    "ncf" 'org-roam-node-find
    "nci" 'org-roam-node-insert
 
-   "en" 'flycheck-next-error
-   "ep" 'flycheck-previous-error
+   "en" 'flymake-goto-next-error
+   "ep" 'flymake-goto-prev-error
 
    "fr" 'find-file-in-project-by-selected
    "ff" 'consult-fd
@@ -160,33 +118,8 @@
 (use-package hydra
   :ensure t)
 
-(use-package treesit-auto
-  :ensure t
-  :custom
-  (treesit-auto-install 'prompt)
-  :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
-
-(use-package lsp-ui
-  :ensure t
-  :after (lsp-mode))
-
-(use-package pet
-  :ensure t
-  :config
-  (add-hook 'python-base-mode-hook 'pet-mode -10))
-
-(use-package lsp-pyright
-  :ensure t
-  :after (lsp-mode)
-  :config
-  (setq lsp-pyright-multi-root nil)
-  :hook (python-base-mode . (lambda ()
-                              (require 'lsp-pyright)
-                              (lsp-deferred))))
-
-(use-package magit :ensure t)
+(use-package magit
+  :ensure t)
 
 (use-package marginalia
   :ensure t
@@ -211,24 +144,6 @@
   :config
   (rainbow-delimiters-mode))
 
-(use-package ruby-mode
-  :config
-  (defun my-ruby-mode-hook ()
-    (set-fill-column 80)
-    (add-hook 'before-save-hook 'delete-trailing-whitespace nil 'local)
-    (setq ruby-insert-encoding-magic-comment nil))
-  (add-hook 'ruby-mode-hook 'my-ruby-mode-hook))
-
-(use-package rust-mode
-  :ensure t
-  :init
-  (setq rust-format-on-save t))
-
-(use-package ruff-format
-  :ensure t
-  :hook
-  ((python-base-mode) . 'ruff-format-on-save-mode))
-
 (use-package smartparens
   :ensure t
   :bind
@@ -252,7 +167,8 @@
   (solaire-global-mode +1))
 
 ;; required for magit
-(use-package transient :ensure t)
+(use-package transient
+  :ensure t)
 
 (use-package treemacs
   :ensure t
@@ -315,20 +231,6 @@
   :config
   (which-key-mode))
 
-;; (use-package yasnippet
-;;   :ensure t
-;;   :init
-;;   (yas-global-mode 1)
-;;   :hook
-;;   ((markdown-mode) . (lambda () (set (make-local-variable 'yas-indent-line) 'fixed)))
-;;   :config
-;;   (setq yas-snippet-dirs
-;;         (append yas-snippet-dirs '("~/projects/dotfiles/emacs/custom-snippets")))
-;;   (yas-reload-all))
-
-;; (use-package yasnippet-snippets
-;;   :ensure t)
-
 (use-package perspective
   :ensure t
   :bind
@@ -360,13 +262,85 @@
   (popper-mode +1)
   (popper-echo-mode +1))
 
-;; (use-package dap-mode :ensure t)
-;; (use-package dap-python
-;;   :after dap-mode
-;;   :init
-;;   (setq dap-python-debugger 'debugpy))
-
 (use-package gptel
   :ensure t)
 
-(use-package compat :ensure t)
+(use-package compat
+  :ensure t)
+
+;; -----------------
+;; LSP
+;; -----------------
+
+(use-package lsp-mode
+  :ensure t
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (setq lsp-log-io nil
+        lsp-diagnostics-provider :flymake
+        ;; lsp-enable-file-watchers nil
+        lsp-file-watch-threshold 6000
+        ;; lsp-disabled-clients '(semgrep-ls ruff)
+        ;; lsp-completion-provider :none
+        lsp-signature-auto-activate nil
+        lsp-copilot-enabled t
+        lsp-copilot-applicable-fn (lambda (file-name major-mode)
+                                    (or
+                                     (eq major-mode 'rust-ts-mode)
+                                     (eq major-mode 'python-ts-mode)))
+        )
+  :commands  (lsp lsp-deferred)
+  :hook
+  (lsp-mode . lsp-enable-which-key-integration)
+  ((rust-ts-mode python-ts-mode) . 'lsp-deferred))
+
+(use-package lsp-ui
+  :ensure t
+  :after (lsp-mode))
+
+(use-package treesit-auto
+  :ensure t
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+
+;; -----------------
+;; Rust
+;; -----------------
+
+(use-package rust-mode
+  :ensure t
+  :init
+  (setq rust-format-on-save t))
+
+;; -----------------
+;; Python
+;; -----------------
+(use-package ruff-format
+  :ensure t
+  :hook
+  ((python-base-mode) . 'ruff-format-on-save-mode))
+
+(use-package flymake-ruff
+  :ensure t
+  :after (flymake)
+  :hook ((python-ts-mode python-mode) . flymake-ruff-load))
+
+(use-package pet
+  :ensure t
+  :config
+  (add-hook 'python-base-mode-hook 'pet-mode -10))
+
+(use-package dap-mode
+  :ensure t)
+
+(use-package dap-python
+  :after dap-mode
+  :init
+  (setq dap-python-debugger 'debugpy))
+
+(use-package jupyter
+  :ensure t)

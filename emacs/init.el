@@ -45,6 +45,7 @@
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  (add-hook 'prog-mode-hook 'flymake-mode)
   (add-hook 'text-mode-hook
             (lambda ()
               ;; (variable-pitch-mode 1)
@@ -65,35 +66,14 @@
               (select-frame frame)
               (my/on-window-display)))
   (add-hook 'after-init-hook #'my/on-window-display)
-  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
-  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 
   :bind
-  (("M-p" . yank-from-kill-ring)))
-
-(use-package lsp-mode
-  :ensure t
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :hook ((lsp-mode . lsp-enable-which-key-integration))
-  :config
-  (setq lsp-log-io nil
-        ;; lsp-enable-file-watchers nil
-        lsp-file-watch-threshold 6000
-        lsp-disabled-clients '(semgrep-ls ruff)
-        ;; lsp-completion-provider :none   ; corfu
-        lsp-signature-auto-activate nil
-        ;; lsp-copilot-enabled t
-        ;; lsp-copilot-applicable-fn (lambda (file-name major-mode) (eq major-mode 'python-ts-mode))
-        )
-  :bind
-  (("C-c r" . xref-find-references)
+  (("M-p" . yank-from-kill-ring)
+   ("C-c r" . xref-find-references)
    ("C-c d" . xref-find-definitions)
    ("<M-left>" . xref-go-back)
-   ("<M-right>" . xref-go-forward))
-  :commands  (lsp lsp-deferred)
-  :hook
-  ((rust-ts-mode python-ts-mode ruby-ts-mode typescript-ts-mode js-ts-mode) . 'lsp-deferred))
+   ("<M-right>" . xref-go-forward)
+   ))
 
 (mapc 'load (file-expand-wildcards "~/projects/dotfiles/emacs/load/*.el"))
 (custom-set-variables
@@ -102,9 +82,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
