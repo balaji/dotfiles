@@ -46,9 +46,9 @@
   (org-roam-db-autosync-mode)
   (require 'org-roam-protocol))
 
-;; (use-package org-roam-ui
-;;   :after (org-roam)
-;;   :ensure t)
+(use-package org-roam-ui
+  :after (org-roam)
+  :ensure t)
 
 (use-package org-journal
   :ensure t
