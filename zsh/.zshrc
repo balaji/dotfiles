@@ -11,10 +11,10 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/git-prompt.zsh/git-prompt.zsh
-source ~/.zsh/git-prompt.zsh/examples/pure.zsh
+source ~/.zsh/git-prompt.zsh/examples/multiline.zsh
 # PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 if [ "$TMUX" = "" ]; then tmux new -A -s main; fi
 
 alias g='git'
@@ -46,6 +46,7 @@ case `uname` in
     alias e='emacsclient -c -a ""'
     ;;
     Darwin)
+	source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
         alias e='emacsclient -c -a ""'
     ;;
 esac
