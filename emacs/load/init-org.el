@@ -24,6 +24,7 @@
      " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
    org-agenda-current-time-string "◀── now ──────────────────────────────────"
    org-ellipsis "…"
+   org-support-shift-select t
    org-agenda-files '("~/projects/notes")
    org-refile-targets '((nil :maxlevel . 1)
                         (org-agenda-files :maxlevel . 1))

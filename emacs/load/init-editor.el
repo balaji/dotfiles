@@ -28,7 +28,8 @@
 (use-package gruvbox-theme
   :ensure t
   :config
-  (load-theme 'gruvbox-dark-medium t))
+  ;; (load-theme 'gruvbox-light-medium t)
+  )
 
 (use-package doom-modeline
   :ensure t
@@ -40,6 +41,7 @@
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
+  (setq evil-want-C-i-jump nil)
   (setq evil-want-fine-undo t)
   (setq evil-want-C-u-scroll t)
   (setq evil-undo-system 'undo-redo)
