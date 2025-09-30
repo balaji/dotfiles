@@ -12,7 +12,6 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/git-prompt.zsh/git-prompt.zsh
 source ~/.zsh/git-prompt.zsh/examples/multiline.zsh
-# PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 if [ "$TMUX" = "" ]; then tmux new -A -s main; fi
@@ -26,7 +25,6 @@ alias gsh='git stash'
 alias gco='git commit'
 alias gr='git rm'
 alias gfu='git fetch upstream'
-alias r3=rebar3
 alias vim=nvim
 alias ls='ls --color=auto'
 
@@ -50,10 +48,6 @@ case `uname` in
         alias e='emacsclient -c -a ""'
     ;;
 esac
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/balaji/.lmstudio/bin"
-# End of LM Studio CLI section
 
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
 export VISUAL="emacsclient -c -nw -a ''"

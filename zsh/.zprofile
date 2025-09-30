@@ -10,7 +10,7 @@ eval "$(pyenv init - zsh)"
 
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+[[ -d $JENV_ROOT/bin ]] && export PATH="$JENV_ROOT/bin:$PATH" && eval "$(jenv init -)"
 
 #nvm
 export NVM_DIR="$HOME/.nvm"
