@@ -83,8 +83,8 @@
    "ncj" 'org-journal-new-entry
    "ncd" 'org-journal-new-date-entry
 
-   "en" 'flymake-goto-next-error
-   "ep" 'flymake-goto-prev-error
+   "en" 'flycheck-next-error
+   "ep" 'flycheck-previous-error
 
    "fr" 'find-file-in-project-by-selected
    "ff" 'consult-fd
@@ -263,17 +263,16 @@
   (setq lsp-keymap-prefix "C-c l")
   :config
   (setq lsp-log-io nil
-        lsp-diagnostics-provider :flymake
         ;; lsp-enable-file-watchers nil
         lsp-file-watch-threshold 6000
-        ;; lsp-disabled-clients '(semgrep-ls ruff)
+        lsp-disabled-clients '(semgrep-ls ruff)
         ;; lsp-completion-provider :none
         lsp-signature-auto-activate nil
-        lsp-copilot-enabled t
-        lsp-copilot-applicable-fn (lambda (file-name major-mode)
-                                    (or
-                                     (eq major-mode 'rust-ts-mode)
-                                     (eq major-mode 'python-ts-mode)))
+        lsp-copilot-enabled nil
+        ;; lsp-copilot-applicable-fn (lambda (file-name major-mode)
+        ;;                             (or
+        ;;                              (eq major-mode 'rust-ts-mode)
+        ;;                              (eq major-mode 'python-ts-mode)))
         )
   :commands  (lsp lsp-deferred)
   :hook
@@ -283,6 +282,11 @@
 (use-package lsp-ui
   :ensure t
   :after (lsp-mode))
+
+(use-package flycheck
+  :ensure t
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package treesit-auto
   :ensure t
@@ -309,10 +313,10 @@
   :hook
   ((python-base-mode) . 'ruff-format-on-save-mode))
 
-(use-package flymake-ruff
-  :ensure t
-  :after (flymake)
-  :hook ((python-ts-mode python-mode) . flymake-ruff-load))
+;; (use-package flymake-ruff
+;;   :ensure t
+;;   :after (flymake)
+;;   :hook ((python-ts-mode python-mode) . flymake-ruff-load))
 
 (use-package pet
   :ensure t
@@ -329,3 +333,11 @@
 
 (use-package jupyter
   :ensure t)
+
+(use-package lsp-pyright
+  :after (lsp-mode)
+  :ensure t
+  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
+  :hook (python-ts-mode . (lambda ()
+                            (require 'lsp-pyright)
+                            (lsp-deferred))))
