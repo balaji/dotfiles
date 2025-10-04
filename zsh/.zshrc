@@ -41,14 +41,15 @@ case `uname` in
     # export GTK_MODULES="unity-gtk-module"
     # export SAL_USE_VCLPLUGIN=gtk
     # export ELECTRON_OZONE_PLATFORM_HINT=wayland
-    alias e='emacsclient -c -a ""'
+    alias e='emacsclient -nw -c -a ""'
     ;;
     Darwin)
 	source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-        alias e='emacsclient -c -a ""'
+        alias e='emacsclient -nw -c -a ""'
     ;;
 esac
 
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
 export VISUAL="emacsclient -c -nw -a ''"
 export EDITOR="emacsclient -c -nw -a ''"
+

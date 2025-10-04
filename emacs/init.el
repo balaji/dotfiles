@@ -4,6 +4,7 @@
       (setq projects-path '("~/projects"))
       (setq my-font "Source Code Pro 13")
       (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
+      (setq dired-use-ls-dired nil)
       )
   (if (eq system-type 'gnu/linux)
       (progn
@@ -18,6 +19,18 @@
       (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
       )))
 (use-package better-defaults :ensure t)
+
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-i-jump nil)
+  (setq evil-want-fine-undo t)
+  (setq evil-want-C-u-scroll t)
+  (setq evil-undo-system 'undo-redo)
+  :config
+  (evil-mode t))
 
 (add-to-list 'load-path "~/projects/dotfiles/emacs/modules/")
 ;; (use-package vim-tab-bar)
@@ -45,8 +58,6 @@
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-  (add-hook 'evil-insert-state-entry-hook (lambda () (send-string-to-terminal "\033[5 q")))
-  (add-hook 'evil-insert-state-exit-hook  (lambda () (send-string-to-terminal "\033[2 q")))
   (add-hook 'prog-mode-hook 'flymake-mode)
   (add-hook 'text-mode-hook
             (lambda ()
@@ -54,14 +65,24 @@
               (visual-line-mode 1)
               (display-line-numbers-mode -1)))
   (defun my/on-window-display ()
-    (if (display-graphic-p)
+    (progn
+      (use-package evil-terminal-cursor-changer
+        :after (evil)
+        :ensure t
+        :init
+        (require 'evil-terminal-cursor-changer)
+        :config
         (progn
-          (set-frame-font my-font nil t)
-          ;; (vim-tab-bar-mode 1)
-          )
-      ;; (progn
-      ;;   (vim-tab-bar-mode 0))
-      ))
+          (if (display-graphic-p)
+              (progn
+                (set-frame-font my-font nil t)
+                (evil-terminal-cursor-changer-deactivate)
+                ;; (vim-tab-bar-mode 1)
+                )
+            (progn
+              (evil-terminal-cursor-changer-activate)
+              ;; (vim-tab-bar-mode 0)
+              ))))))
 
   (add-hook 'after-make-frame-functions
             (lambda (frame)

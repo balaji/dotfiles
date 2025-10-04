@@ -25,7 +25,8 @@
    org-agenda-current-time-string "◀── now ──────────────────────────────────"
    org-ellipsis "…"
    org-support-shift-select t
-   org-agenda-files '("~/projects/notes")
+   org-agenda-files (list org-directory)
+   org-default-notes-file (concat org-directory "/capture.org")
    org-refile-targets '((nil :maxlevel . 1)
                         (org-agenda-files :maxlevel . 1))
    ;; org-capture-templates
@@ -35,21 +36,6 @@
   (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
   :hook
   ('org-mode . (lambda() (smartparens-mode -1))))
-
-(use-package org-roam
-  :ensure t
-  :after (org org-roam-dailies)
-  :config
-  (setq
-   org-roam-directory org-directory
-   org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag))
-   org-roam-completion-everywhere t)
-  (org-roam-db-autosync-mode)
-  (require 'org-roam-protocol))
-
-(use-package org-roam-ui
-  :after (org-roam)
-  :ensure t)
 
 (use-package org-journal
   :ensure t
@@ -70,7 +56,7 @@
   (setq org-modern-star 'replace)
   (global-org-modern-mode))
 
-(use-package org-appear
+(use-package org-super-agenda
   :ensure t
-  :hook
-  (org-mode . org-appear-mode))
+  :config
+  (org-super-agenda-mode))

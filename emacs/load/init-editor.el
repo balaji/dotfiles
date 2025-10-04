@@ -36,21 +36,6 @@
   :config
   (doom-modeline-mode))
 
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-i-jump nil)
-  (setq evil-want-fine-undo t)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-undo-system 'undo-redo)
-  ;; :hook
-  ;; (evil-insert-state-entry . (lambda () (send-string-to-terminal "\033[5 q")))
-  ;; (evil-insert-state-exit . (lambda () (send-string-to-terminal "\033[2 q")))
-  :config
-  (evil-mode t))
-
 (use-package evil-collection
   :ensure t
   :after evil
@@ -97,8 +82,6 @@
    "ncc" 'org-capture
    "ncj" 'org-journal-new-entry
    "ncd" 'org-journal-new-date-entry
-   "ncf" 'org-roam-node-find
-   "nci" 'org-roam-node-insert
 
    "en" 'flymake-goto-next-error
    "ep" 'flymake-goto-prev-error
