@@ -14,7 +14,6 @@ source ~/.zsh/git-prompt.zsh/git-prompt.zsh
 source ~/.zsh/git-prompt.zsh/examples/multiline.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-if [ "$TMUX" = "" ]; then tmux new -A -s main; fi
 
 alias g='git'
 alias gpl='git pull'
@@ -27,6 +26,7 @@ alias gr='git rm'
 alias gfu='git fetch upstream'
 alias vim=nvim
 alias ls='ls --color=auto'
+alias tmux='tmux new -A -s main'
 
 case `uname` in
     Linux)
@@ -52,4 +52,3 @@ esac
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
 export VISUAL="emacsclient -c -nw -a ''"
 export EDITOR="emacsclient -c -nw -a ''"
-
