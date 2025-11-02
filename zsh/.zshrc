@@ -27,6 +27,7 @@ alias gfu='git fetch upstream'
 alias vim=nvim
 alias ls='ls --color=auto'
 alias tmux='tmux new -A -s main'
+alias e='emacsclient -c -a ""'
 
 case `uname` in
     Linux)
@@ -41,11 +42,9 @@ case `uname` in
     # export GTK_MODULES="unity-gtk-module"
     # export SAL_USE_VCLPLUGIN=gtk
     # export ELECTRON_OZONE_PLATFORM_HINT=wayland
-    alias e='emacsclient -nw -c -a ""'
     ;;
     Darwin)
 	source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-        alias e='emacsclient -nw -c -a ""'
     ;;
 esac
 

@@ -15,7 +15,7 @@ alias gfu='git fetch upstream'
 alias vim=nvim
 alias ls='ls --color=auto'
 alias tmux='tmux new -A -s main'
-alias e='emacsclient -nw -c -a ""'
+alias e='emacsclient -c -a ""'
 
 export VISUAL="emacsclient -c -nw -a ''"
 export EDITOR="emacsclient -c -nw -a ''"

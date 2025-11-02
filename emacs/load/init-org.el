@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package org
   :config
   (add-to-list 'org-modules 'org-habit t)

@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (if (eq system-type 'darwin)
     ;;; mac osx
     (progn
@@ -65,24 +66,14 @@
               (visual-line-mode 1)
               (display-line-numbers-mode -1)))
   (defun my/on-window-display ()
-    (progn
-      (use-package evil-terminal-cursor-changer
-        :after (evil)
-        :ensure t
-        :init
-        (require 'evil-terminal-cursor-changer)
-        :config
+    (if (display-graphic-p)
         (progn
-          (if (display-graphic-p)
-              (progn
-                (set-frame-font my-font nil t)
-                (evil-terminal-cursor-changer-deactivate)
-                ;; (vim-tab-bar-mode 1)
-                )
-            (progn
-              (evil-terminal-cursor-changer-activate)
-              ;; (vim-tab-bar-mode 0)
-              ))))))
+          (set-frame-font my-font nil t)
+          ;; (vim-tab-bar-mode 1)
+          )
+      (progn
+        ;; (vim-tab-bar-mode 0)
+        )))
 
   (add-hook 'after-make-frame-functions
             (lambda (frame)

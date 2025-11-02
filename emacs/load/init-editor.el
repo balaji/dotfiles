@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package ace-window
   :ensure t
   :config
@@ -28,7 +29,7 @@
 (use-package gruvbox-theme
   :ensure t
   :config
-  ;; (load-theme 'gruvbox-light-medium t)
+  (load-theme 'gruvbox-dark-medium t)
   )
 
 (use-package doom-modeline
@@ -257,31 +258,32 @@
 ;; LSP
 ;; -----------------
 
-(use-package lsp-mode
-  :ensure t
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :config
-  (setq lsp-log-io nil
-        ;; lsp-enable-file-watchers nil
-        lsp-file-watch-threshold 6000
-        lsp-disabled-clients '(semgrep-ls ruff)
-        ;; lsp-completion-provider :none
-        lsp-signature-auto-activate nil
-        lsp-copilot-enabled nil
-        ;; lsp-copilot-applicable-fn (lambda (file-name major-mode)
-        ;;                             (or
-        ;;                              (eq major-mode 'rust-ts-mode)
-        ;;                              (eq major-mode 'python-ts-mode)))
-        )
-  :commands  (lsp lsp-deferred)
-  :hook
-  (lsp-mode . lsp-enable-which-key-integration)
-  ((rust-ts-mode python-ts-mode) . 'lsp-deferred))
+;; (use-package lsp-mode
+;;   :ensure t
+;;   :init
+;;   (setq lsp-keymap-prefix "C-c l")
+;;   :config
+;;   (setq lsp-log-io nil
+;;         ;; lsp-enable-file-watchers nil
+;;         lsp-file-watch-threshold 6000
+;;         lsp-disabled-clients '(semgrep-ls ruff pyright)
+;;         ;; lsp-completion-provider :none
+;;         lsp-signature-auto-activate nil
+;;         lsp-copilot-enabled nil
+;;         ;; lsp-copilot-applicable-fn (lambda (file-name major-mode)
+;;         ;;                             (or
+;;         ;;                              (eq major-mode 'rust-ts-mode)
+;;         ;;                              (eq major-mode 'python-ts-mode)))
+;;         )
+;;   :commands  (lsp lsp-deferred)
+;;   :hook
+;;   (lsp-mode . lsp-enable-which-key-integration)
+;;   ((rust-ts-mode python-ts-mode) . 'lsp-deferred)
+;;   )
 
-(use-package lsp-ui
-  :ensure t
-  :after (lsp-mode))
+;; (use-package lsp-ui
+;;   :ensure t
+;;   :after (lsp-mode))
 
 (use-package flycheck
   :ensure t
@@ -323,21 +325,21 @@
   :config
   (add-hook 'python-base-mode-hook 'pet-mode -10))
 
-(use-package dap-mode
-  :ensure t)
+;; (use-package dap-mode
+;;   :ensure t)
 
-(use-package dap-python
-  :after dap-mode
-  :init
-  (setq dap-python-debugger 'debugpy))
+;; (use-package dap-python
+;;   :after dap-mode
+;;   :init
+;;   (setq dap-python-debugger 'debugpy))
 
-(use-package jupyter
-  :ensure t)
+;; (use-package jupyter
+;;   :ensure t)
 
-(use-package lsp-pyright
-  :after (lsp-mode)
-  :ensure t
-  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
-  :hook (python-ts-mode . (lambda ()
-                            (require 'lsp-pyright)
-                            (lsp-deferred))))
+;; (use-package lsp-pyright
+;;   :after (lsp-mode)
+;;   :ensure t
+;;   :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
+;;   :hook (python-ts-mode . (lambda ()
+;;                             (require 'lsp-pyright)
+;;                             (lsp-deferred))))

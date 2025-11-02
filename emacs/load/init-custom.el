@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (defun new-post(blog-name)
   "Create a new microblog entry titled BLOG-NAME for my blog in balaji.dev."
   (interactive "sBlog-name:")
