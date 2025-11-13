@@ -38,6 +38,21 @@
   :hook
   ('org-mode . (lambda() (smartparens-mode -1))))
 
+(use-package org-roam
+  :ensure t
+  :after (org org-roam-dailies)
+  :config
+  (setq
+   org-roam-directory org-directory
+   org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag))
+   org-roam-completion-everywhere t)
+  (org-roam-db-autosync-mode)
+  (require 'org-roam-protocol))
+
+(use-package org-roam-ui
+  :after (org-roam)
+  :ensure t)
+
 (use-package org-journal
   :ensure t
   :custom

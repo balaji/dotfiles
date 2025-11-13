@@ -82,10 +82,12 @@
    "nt" 'org-todo-list
    "ncc" 'org-capture
    "ncj" 'org-journal-new-entry
+   "ncf" 'org-roam-node-find
+   "nci" 'org-roam-node-insert
    "ncd" 'org-journal-new-date-entry
 
-   "en" 'flycheck-next-error
-   "ep" 'flycheck-previous-error
+   "en" 'flymake-goto-next-error
+   "ep" 'flymake-goto-prev-error
 
    "fr" 'find-file-in-project-by-selected
    "ff" 'consult-fd
@@ -179,14 +181,14 @@
   :init
   (vertico-mode))
 
-(use-package vterm
-  :after popper
-  :ensure t
-  :custom
-  (vterm--internal popper-display-function)
-  :hook
-  (vterm-mode . (lambda ()
-                  (display-line-numbers-mode -1))))
+;; (use-package vterm
+;;   :after popper
+;;   :ensure t
+;;   :custom
+;;   (vterm--internal popper-display-function)
+;;   :hook
+;;   (vterm-mode . (lambda ()
+;;                   (display-line-numbers-mode -1))))
 
 (defun run-in-vterm (command)
   "Insert text of current line in vterm and execute."
@@ -207,7 +209,7 @@
 (use-package whaler
   :ensure t
   :config
-  (setq whaler-directories-alist projects-path)
+  (setq whaler-directories-alist '("~/projects"))
   (setq whaler-include-hidden-directories nil)
   (setq whaler-default-working-directory "~")
   (whaler-populate-projects-directories))
@@ -242,7 +244,7 @@
           "Output\\*$"
           "\\*Async Shell Command\\*"
           help-mode
-          vterm-mode
+          ;; vterm-mode
           inferior-python-mode
           compilation-mode))
   (popper-mode +1)
@@ -258,37 +260,9 @@
 ;; LSP
 ;; -----------------
 
-;; (use-package lsp-mode
-;;   :ensure t
-;;   :init
-;;   (setq lsp-keymap-prefix "C-c l")
-;;   :config
-;;   (setq lsp-log-io nil
-;;         ;; lsp-enable-file-watchers nil
-;;         lsp-file-watch-threshold 6000
-;;         lsp-disabled-clients '(semgrep-ls ruff pyright)
-;;         ;; lsp-completion-provider :none
-;;         lsp-signature-auto-activate nil
-;;         lsp-copilot-enabled nil
-;;         ;; lsp-copilot-applicable-fn (lambda (file-name major-mode)
-;;         ;;                             (or
-;;         ;;                              (eq major-mode 'rust-ts-mode)
-;;         ;;                              (eq major-mode 'python-ts-mode)))
-;;         )
-;;   :commands  (lsp lsp-deferred)
-;;   :hook
-;;   (lsp-mode . lsp-enable-which-key-integration)
-;;   ((rust-ts-mode python-ts-mode) . 'lsp-deferred)
-;;   )
-
-;; (use-package lsp-ui
-;;   :ensure t
-;;   :after (lsp-mode))
-
-(use-package flycheck
-  :ensure t
+(use-package eglot
   :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  (add-to-list 'eglot-server-programs '(python-mode . ("ty" "server"))))
 
 (use-package treesit-auto
   :ensure t
@@ -315,23 +289,23 @@
   :hook
   ((python-base-mode) . 'ruff-format-on-save-mode))
 
-;; (use-package flymake-ruff
-;;   :ensure t
-;;   :after (flymake)
-;;   :hook ((python-ts-mode python-mode) . flymake-ruff-load))
+(use-package flymake-ruff
+  :ensure t
+  :after (flymake)
+  :hook ((python-ts-mode python-mode) . flymake-ruff-load))
 
 (use-package pet
   :ensure t
   :config
   (add-hook 'python-base-mode-hook 'pet-mode -10))
 
-;; (use-package dap-mode
-;;   :ensure t)
+(use-package dap-mode
+  :ensure t)
 
-;; (use-package dap-python
-;;   :after dap-mode
-;;   :init
-;;   (setq dap-python-debugger 'debugpy))
+(use-package dap-python
+  :after dap-mode
+  :init
+  (setq dap-python-debugger 'debugpy))
 
 ;; (use-package jupyter
 ;;   :ensure t)

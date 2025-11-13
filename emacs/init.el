@@ -2,20 +2,20 @@
 (if (eq system-type 'darwin)
     ;;; mac osx
     (progn
-      (setq projects-path '("~/projects"))
+      (setq package-cache user-emacs-directory)
       (setq my-font "Source Code Pro 13")
       (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
       (setq dired-use-ls-dired nil)
       )
   (if (eq system-type 'gnu/linux)
       (progn
-	      (setq projects-path '("~/projects"))
-              (setq my-font "Source Code Pro Medium 14")
+        (setq package-cache user-emacs-directory)
+        (setq my-font "Source Code Pro Medium 14")
         (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
 	)
     ;;; windows
     (progn
-      (setq projects-path '("~/projects"))
+      (setq package-cache "d:\cache")
       (setq my-font "Source Code Pro Medium 11")
       (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
       )))
