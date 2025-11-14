@@ -307,13 +307,7 @@
   :init
   (setq dap-python-debugger 'debugpy))
 
-;; (use-package jupyter
-;;   :ensure t)
+(use-package fsharp-mode
+  :ensure t)
 
-;; (use-package lsp-pyright
-;;   :after (lsp-mode)
-;;   :ensure t
-;;   :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
-;;   :hook (python-ts-mode . (lambda ()
-;;                             (require 'lsp-pyright)
-;;                             (lsp-deferred))))
+(use-package eglot-fsharp :ensure t)

@@ -12,12 +12,12 @@
         (setq package-cache user-emacs-directory)
         (setq my-font "Source Code Pro Medium 14")
         (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
-	)
+        )
     ;;; windows
     (progn
       (setq package-cache "d:\cache")
-      (setq my-font "Source Code Pro Medium 11")
-      (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
+      (setq my-font "Cascadia Code 11")
+      (load-file "~/projects/dotfiles/emacs/package-manager/package.el")
       )))
 (use-package better-defaults :ensure t)
 

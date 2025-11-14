@@ -16,4 +16,5 @@
 
 (straight-use-package 'use-package)
 
+(setq straight-base-dir package-cache)
 (setq straight-use-package-by-default 1)
