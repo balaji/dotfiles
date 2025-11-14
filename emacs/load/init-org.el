@@ -11,7 +11,7 @@
    org-fold-catch-invisible-edits 'show-and-error
    org-special-ctrl-a/e t
    org-insert-heading-respect-content t
-   org-directory "~/projects/notes"
+   org-directory notes-directory
    org-duration-format (quote h:mm)
    ;; Org styling, hide markup etc.
    org-hide-emphasis-markers t

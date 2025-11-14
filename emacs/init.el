@@ -1,24 +1,26 @@
 ;; -*- lexical-binding: t; -*-
+(setq package-cache user-emacs-directory)
+(setq my-font "Source Code Pro 13")
+(setq projects-path "~/projects")
+(setq package-manager "elpaca")
+(setq notes-directory "~/projects/notes")
+
 (if (eq system-type 'darwin)
     ;;; mac osx
     (progn
-      (setq package-cache user-emacs-directory)
-      (setq my-font "Source Code Pro 13")
-      (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
       (setq dired-use-ls-dired nil)
       )
-  (if (eq system-type 'gnu/linux)
-      (progn
-        (setq package-cache user-emacs-directory)
-        (setq my-font "Source Code Pro Medium 14")
-        (load-file "~/projects/dotfiles/emacs/package-manager/elpaca.el")
-        )
-    ;;; windows
+  (if (eq system-type 'windows-nt)
     (progn
-      (setq package-cache "d:\cache")
+      (setq projects-path "d:/projects")
+      (setq package-cache "d:/cache")
       (setq my-font "Cascadia Code 11")
-      (load-file "~/projects/dotfiles/emacs/package-manager/package.el")
+      (setq package-manager "package")
+      (setq notes-directory "g:/My Drive/OMSCS/notes")
       )))
+
+(load-file (concat projects-path "/dotfiles/emacs/package-manager/" package-manager ".el"))
+
 (use-package better-defaults :ensure t)
 
 (use-package evil
@@ -33,7 +35,7 @@
   :config
   (evil-mode t))
 
-(add-to-list 'load-path "~/projects/dotfiles/emacs/modules/")
+(add-to-list 'load-path (concat projects-path "/dotfiles/emacs/modules/"))
 ;; (use-package vim-tab-bar)
 (use-package emacs
   :custom
@@ -55,11 +57,11 @@
   ;; (desktop-save-mode t)
   (recentf-mode t)
   (global-display-line-numbers-mode t)
-  ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
-  ;; (add-hook 'prog-mode-hook 'flymake-mode)
+  (add-hook 'prog-mode-hook 'flymake-mode)
   (add-hook 'text-mode-hook
             (lambda ()
               ;; (variable-pitch-mode 1)
@@ -89,7 +91,7 @@
    ("<M-right>" . xref-go-forward)
    ))
 
-(mapc 'load (file-expand-wildcards "~/projects/dotfiles/emacs/load/*.el"))
+(mapc 'load (file-expand-wildcards (concat projects-path "/dotfiles/emacs/load/*.el")))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

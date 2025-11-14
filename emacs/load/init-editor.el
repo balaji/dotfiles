@@ -181,14 +181,15 @@
   :init
   (vertico-mode))
 
-;; (use-package vterm
-;;   :after popper
-;;   :ensure t
-;;   :custom
-;;   (vterm--internal popper-display-function)
-;;   :hook
-;;   (vterm-mode . (lambda ()
-;;                   (display-line-numbers-mode -1))))
+(if (not (eq system-type 'windows-nt))
+    (use-package vterm
+      :after popper
+      :ensure t
+      :custom
+      (vterm--internal popper-display-function)
+      :hook
+      (vterm-mode . (lambda ()
+                      (display-line-numbers-mode -1)))))
 
 (defun run-in-vterm (command)
   "Insert text of current line in vterm and execute."
@@ -250,11 +251,9 @@
   (popper-mode +1)
   (popper-echo-mode +1))
 
-(use-package gptel
-  :ensure t)
+(use-package gptel :ensure t)
 
-(use-package compat
-  :ensure t)
+(use-package compat :ensure t)
 
 ;; -----------------
 ;; LSP
