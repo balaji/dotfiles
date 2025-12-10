@@ -13,7 +13,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/git-prompt.zsh/git-prompt.zsh
 source ~/.zsh/git-prompt.zsh/examples/multiline.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 alias g='git'
 alias gpl='git pull'
@@ -31,17 +31,8 @@ alias e='emacsclient -c -a ""'
 
 case `uname` in
     Linux)
-    # alias code="code --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    # alias spotify="spotify --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    # alias 1password="1password --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    # alias steam="steam --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    # alias obsidian="obsidian --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
-    # alias google-chrome="google-chrome --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto"
     export PATH="/home/balaji/.local/bin:$PATH"
     alias ls='ls --color'
-    # export GTK_MODULES="unity-gtk-module"
-    # export SAL_USE_VCLPLUGIN=gtk
-    # export ELECTRON_OZONE_PLATFORM_HINT=wayland
     ;;
     Darwin)
 	source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh

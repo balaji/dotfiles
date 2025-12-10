@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (setq package-cache user-emacs-directory)
-(setq my-font "Source Code Pro 13")
+(setq my-font "Source Code Pro 11")
 (setq projects-path "~/projects")
 (setq package-manager "elpaca")
 (setq notes-directory "~/projects/notes")

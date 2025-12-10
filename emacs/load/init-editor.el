@@ -253,7 +253,7 @@
 
 (use-package gptel :ensure t)
 
-(use-package compat :ensure t)
+;; (use-package compat :ensure t)
 
 ;; -----------------
 ;; LSP
