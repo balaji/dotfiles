@@ -3,7 +3,7 @@
 (setq my-font "Google Sans Code 11")
 (setq projects-path "~/projects")
 (setq package-manager "elpaca")
-(setq notes-directory "~/projects/notes")
+(setq notes-directory "~/gdrive/OMSCS/notes")
 
 (if (eq system-type 'darwin)
     ;;; mac osx

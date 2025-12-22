@@ -44,3 +44,4 @@ esac
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
 export VISUAL="emacsclient -c -nw -a ''"
 export EDITOR="emacsclient -c -nw -a ''"
+eval "$(zoxide init zsh)"
