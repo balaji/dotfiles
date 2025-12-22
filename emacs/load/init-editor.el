@@ -255,6 +255,11 @@
 
 ;; (use-package compat :ensure t)
 
+(use-package yasnippet :ensure t
+  :init
+  (setq yas-snippet-dirs '("~/projects/dotfiles/emacs/custom-snippets"))
+  (yas-global-mode 1))
+
 ;; -----------------
 ;; LSP
 ;; -----------------
