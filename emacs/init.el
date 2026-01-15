@@ -9,6 +9,8 @@
     ;;; mac osx
     (progn
       (setq dired-use-ls-dired nil)
+      (setq my-font "Google Sans Code 14")
+      (setq notes-directory "/Users/balaji/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org")
       )
   (if (eq system-type 'windows-nt)
     (progn
