@@ -32,7 +32,7 @@ alias e='emacsclient -c -a ""'
 
 case `uname` in
     Linux)
-    export PATH="/home/balaji/.local/bin:$PATH"
+    export PATH="/home/balaji/.local/bin:/usr/local/emacs/bin:$PATH"
     alias ls='ls --color'
     export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
     ;;

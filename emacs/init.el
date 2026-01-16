@@ -1,9 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 (setq package-cache user-emacs-directory)
-(setq my-font "Google Sans Code 11")
+(setq my-font "Google Sans Code Medium 14")
 (setq projects-path "~/projects")
 (setq package-manager "elpaca")
-(setq notes-directory "~/gdrive/OMSCS/notes")
+(setq notes-directory "~/iclouddrive/org")
 
 (if (eq system-type 'darwin)
     ;;; mac osx
@@ -14,9 +14,6 @@
       )
   (if (eq system-type 'windows-nt)
     (progn
-      (setq projects-path "d:/projects")
-      (setq package-cache "d:/cache")
-      (setq my-font "Cascadia Code 11")
       (setq package-manager "package")
       (setq notes-directory "g:/My Drive/OMSCS/notes")
       )))
@@ -53,6 +50,7 @@
   (setq initial-scratch-message "")
   (setq vc-follow-symlinks t)
   (setq auto-save-visited-mode t)
+  (setq warning-minimum-level :emergency)
   (setq tab-width 4)
   (auto-save-visited-mode +1)
   (cua-mode t)
