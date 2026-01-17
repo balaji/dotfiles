@@ -9,14 +9,13 @@
     ;;; mac osx
     (progn
       (setq dired-use-ls-dired nil)
-      (setq my-font "Google Sans Code 14")
       (setq notes-directory "/Users/balaji/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org")
       )
   (if (eq system-type 'windows-nt)
-    (progn
-      (setq package-manager "package")
-      (setq notes-directory "g:/My Drive/OMSCS/notes")
-      )))
+      (progn
+        (setq package-manager "package")
+        (setq notes-directory "C:/Users/balaj/iCloudDrive/iCloud~com~appsonthemove~beorg/org")
+        )))
 
 (load-file (concat projects-path "/dotfiles/emacs/package-manager/" package-manager ".el"))
 
