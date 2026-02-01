@@ -1,5 +1,3 @@
-Import-Module posh-git
-
 Set-Alias g "git"
 
 function gst() {
@@ -11,4 +9,5 @@ function ga {
 }
 
 Set-PSReadLineOption -EditMode Emacs
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\pure.omp.json" | Invoke-Expression
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+Invoke-Expression (&starship init powershell)
