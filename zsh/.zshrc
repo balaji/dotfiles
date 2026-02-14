@@ -28,12 +28,14 @@ alias e='emacsclient -c -a ""'
 
 case `uname` in
     Linux)
-    export PATH="/home/balaji/.local/bin:/usr/local/emacs/bin:$PATH"
-    alias ls='ls --color'
-    export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
-    ;;
+        export PATH="/home/balaji/.local/bin:/usr/local/emacs/bin:$PATH"
+        alias ls='ls --color'
+        export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+        ;;
     Darwin)
-    ;;
+        alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+        export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$PATH"
+        ;;
 esac
 
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
