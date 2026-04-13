@@ -1,0 +1,7 @@
+font-family = "Google Sans Code"
+font-size = 15
+font-style = semibold
+theme = "Gruvbox Dark"
+cursor-style = block
+shell-integration-features = no-cursor
+macos-option-as-alt = left
