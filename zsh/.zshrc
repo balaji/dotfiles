@@ -31,6 +31,7 @@ case `uname` in
         export PATH="/home/balaji/.local/bin:/usr/local/emacs/bin:$PATH"
         alias ls='ls --color'
         export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+	export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:~/.local/share/flatpak/exports/share
         ;;
     Darwin)
         alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
@@ -39,8 +40,6 @@ case `uname` in
 esac
 
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
-export VISUAL="emacsclient -c -nw -a ''"
-export EDITOR="emacsclient -c -nw -a ''"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 

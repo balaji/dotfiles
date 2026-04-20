@@ -78,19 +78,19 @@
         "format": "{}",
         "return-type": "json",
         "on-click": "playerctl -p spotify previous",
-        "tooltip": false,
+        "tooltip": false
     },
     "custom/spotify-next": {
         "exec" : "/usr/bin/python3 $HOME/.config/waybar/playerdetect.py --player spotify --button ",
         "format": "{}",
         "return-type": "json",
         "on-click": "playerctl -p spotify next",
-        "tooltip": false,
+        "tooltip": false
     },
     "custom/spotify": {
         "exec" : "/usr/bin/python3 $HOME/.config/waybar/mediaplayer.py --player spotify",
         "format": "{}",
         "return-type": "json",
-        "on-click": "playerctl -p spotify play-pause",
+        "on-click": "playerctl -p spotify play-pause"
     }
 }

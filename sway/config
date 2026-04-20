@@ -110,8 +110,8 @@ assign {
        [app_id="spotify"] 9
 }
 # removes title bar
-default_border none
-default_floating_border none
+#default_border none
+#default_floating_border none
 font pango:monospace 0.001
 titlebar_padding 1
 titlebar_border_thickness 0
@@ -119,14 +119,11 @@ titlebar_border_thickness 0
 exec {
     /usr/libexec/pam_kwallet_init
     foot --server
-    firefox
     nm-applet
     blueman-applet
-    nextcloud --background
     pasystray
     kwalletd6
     dunst
-    emacs --daemon
 }
 
 include /etc/sway/config.d/*

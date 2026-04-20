@@ -120,7 +120,7 @@ class PlayerManager:
             text = "Pre"
             self.write_output(text, player)
         else:
-            logger.debug(f"Other player {current_playing.props.player_name} is playing, skipping")
+            logger.debug(f"Other player {current_player.props.player_name} is playing, skipping")
 
     def on_player_appeared(self, _, player):
         logger.info(f"Player has appeared: {player.name}")
