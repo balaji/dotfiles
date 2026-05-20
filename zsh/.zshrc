@@ -35,7 +35,8 @@ case `uname` in
         ;;
     Darwin)
         alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
-        export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$PATH"
+        export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$HOME/.local/bin:$PATH"
+	export DISABLE_SPRING=1
         ;;
 esac
 

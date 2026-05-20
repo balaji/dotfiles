@@ -5,3 +5,5 @@ theme = "Gruvbox Dark"
 cursor-style = block
 shell-integration-features = no-cursor
 macos-option-as-alt = left
+copy-on-select = clipboard
+
