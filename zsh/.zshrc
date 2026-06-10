@@ -1,4 +1,4 @@
-HISTFILE=~/.histfile
+export HISTFILE=~/.histfile
 
 HISTSIZE=10000
 SAVEHIST=1000
@@ -11,7 +11,7 @@ fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 alias g='git'
 alias gpl='git pull'
@@ -19,7 +19,8 @@ alias gpu='git push'
 alias gst='git status'
 alias ga='git add'
 alias gsh='git stash'
-alias gco='git commit'
+alias gco='git checkout'
+alias gcm='git commit'
 alias gr='git rm'
 alias gfu='git fetch upstream'
 alias ls='ls -G --color=auto'
@@ -37,6 +38,7 @@ case `uname` in
         alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
         export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$HOME/.local/bin:$PATH"
 	export DISABLE_SPRING=1
+	export EDITOR=vim
         ;;
 esac
 
@@ -44,10 +46,16 @@ ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-# HSTR configuration - add this to ~/.zshrc
 alias hh=hstr                    # hh to be alias for hstr
 setopt histignorespace           # skip cmds w/ leading space from history
 export HSTR_CONFIG=hicolor       # get more colors
 bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
 export HSTR_TIOCSTI=y
 
+
+# bun completions
+[ -s "/Users/balaji/.bun/_bun" ] && source "/Users/balaji/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
