@@ -35,8 +35,7 @@ case `uname` in
 	export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:~/.local/share/flatpak/exports/share
         ;;
     Darwin)
-        alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
-        export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$HOME/.local/bin:$PATH"
+        export PATH="$HOME/.local/bin:$PATH"
 	export DISABLE_SPRING=1
 	export EDITOR=vim
         ;;
