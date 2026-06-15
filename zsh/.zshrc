@@ -29,10 +29,18 @@ alias e='emacsclient -c -a ""'
 
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
 
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+
+alias hh=hstr                    # hh to be alias for hstr
+setopt histignorespace           # skip cmds w/ leading space from history
+export HSTR_CONFIG=hicolor       # get more colors
+bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
+export HSTR_TIOCSTI=y
 
 # Added by `rbenv init` on Mon May 18 12:25:48 CEST 2026
 eval "$(rbenv init - --no-rehash zsh)"
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$BREW_HOME/opt/nvm/nvm.sh" ] && \. "$BREW_HOME/opt/nvm/nvm.sh"  # This loads nvm
