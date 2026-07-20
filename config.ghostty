@@ -1,7 +1,6 @@
 font-family = "FiraCode Nerd Font"
 font-size = 15
 font-style = "semibold"
-theme = "Gruvbox Dark"
 cursor-style = block
 shell-integration = zsh
 shell-integration-features = no-cursor
