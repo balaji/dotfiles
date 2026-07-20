@@ -4,13 +4,16 @@ case `uname` in
         export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
         export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
         export BREW_HOME=/home/linuxbrew/.linuxbrew
-        export PNPM_HOME="/home/balaji/.local/share/pnpm"
+        export PNPM_HOME="$HOME/.local/share/pnpm"
+	export ANDROID_SDK_HOME=$HOME/Android/Sdk
         ;;
     Darwin)
         export DISABLE_SPRING=1
         export EDITOR=vim
         export BREW_HOME=/opt/homebrew
         export PNPM_HOME="$HOME/Library/pnpm"
+	export ANDROID_SDK_HOME=$HOME/Library/Android/sdk
+	export PATH=$BREW_HOME/opt/coreutils/libexec/gnubin:$PATH
         ;;
 esac
 
@@ -28,4 +31,5 @@ esac
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export PATH="$BREW_HOME/opt/coreutils/libexec/gnubin:$HOME/.local/bin:$HOME/Library/Android/sdk/platform-tools:$PATH"
+
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/emulator:$PATH"

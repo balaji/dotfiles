@@ -39,6 +39,8 @@ export HSTR_CONFIG=hicolor       # get more colors
 bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
 export HSTR_TIOCSTI=y
 
+. "$HOME/.cargo/env"
+
 # Added by `rbenv init` on Mon May 18 12:25:48 CEST 2026
 eval "$(rbenv init - --no-rehash zsh)"
 
