@@ -13,31 +13,9 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-alias g='git'
-alias gpl='git pull'
-alias gpu='git push'
-alias gst='git status'
-alias ga='git add'
-alias gsh='git stash'
-alias gco='git checkout'
-alias gcm='git commit'
-alias gr='git rm'
-alias gfu='git fetch upstream'
-alias ls='ls -G --color=auto'
-alias tmux='tmux new -A -s main'
-alias e='emacsclient -c -a ""'
-
-ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[yellow]%}"
-
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
-
-alias hh=hstr                    # hh to be alias for hstr
-setopt histignorespace           # skip cmds w/ leading space from history
-export HSTR_CONFIG=hicolor       # get more colors
-bindkey -s "\C-r" "\C-a hstr -- \C-j"     # bind hstr to Ctrl-r (for Vi mode check doc)
-export HSTR_TIOCSTI=y
 
 . "$HOME/.cargo/env"
 
@@ -71,3 +49,19 @@ load-nvmrc() {
 }
 #add-zsh-hook chpwd load-nvmrc
 #load-nvmrc
+
+# HSTR configuration - add this to ~/.zshrc
+alias hh=hstr                    # hh to be alias for hstr
+setopt histignorespace           # skip cmds w/ leading space from history
+export HSTR_CONFIG=hicolor       # get more colors
+hstr_no_tiocsti() {
+    zle -I
+    { HSTR_OUT="$( { </dev/tty hstr -- ${BUFFER}; } 2>&1 1>&3 3>&- )"; } 3>&1;
+    BUFFER="${HSTR_OUT}"
+    CURSOR=${#BUFFER}
+    zle redisplay
+}
+zle -N hstr_no_tiocsti
+bindkey '\C-r' hstr_no_tiocsti
+export HSTR_TIOCSTI=n
+

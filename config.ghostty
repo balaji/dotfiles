@@ -9,5 +9,3 @@ scrollback-limit = 1000000
 keybind = ctrl+n=new_window
 keybind = super+r=reload_config
 window-save-state = always
-
-

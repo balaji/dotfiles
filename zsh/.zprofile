@@ -1,3 +1,17 @@
+alias g='git'
+alias gpl='git pull'
+alias gpu='git push'
+alias gst='git status'
+alias ga='git add'
+alias gsh='git stash'
+alias gco='git checkout'
+alias gcm='git commit'
+alias gr='git rm'
+alias gfu='git fetch upstream'
+alias ls='ls -G --color=auto'
+alias tmux='tmux new -A -s main'
+alias e='emacsclient -c -a ""'
+
 case `uname` in
     Linux)
         alias ls='ls --color'
