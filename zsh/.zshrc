@@ -9,9 +9,9 @@ skip_global_compinit=1
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 # End of lines added by compinstall
 
+#source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"

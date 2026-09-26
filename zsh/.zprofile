@@ -19,7 +19,8 @@ case `uname` in
         export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
         export BREW_HOME=/home/linuxbrew/.linuxbrew
         export PNPM_HOME="$HOME/.local/share/pnpm"
-	export ANDROID_SDK_HOME=$HOME/Android/Sdk
+        export JAVA_HOME=/usr/lib/jvm/default
+        export ANDROID_SDK_HOME=$HOME/Android/Sdk
         ;;
     Darwin)
         export DISABLE_SPRING=1
