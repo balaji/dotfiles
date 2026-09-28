@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 alias g='git'
 alias gpl='git pull'
 alias gpu='git push'
@@ -11,6 +12,12 @@ alias gfu='git fetch upstream'
 alias ls='ls -G --color=auto'
 alias tmux='tmux new -A -s main'
 alias e='emacsclient -c -a ""'
+
+=======
+>>>>>>> Stashed changes
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/balaji/.docker/bin"
+# End of Docker Desktop section.
 
 case `uname` in
     Linux)
@@ -47,4 +54,4 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/emulator:$PATH"
+export PATH="$HOME/.composio:$HOME/.local/bin:$HOME/.cargo/bin:$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/emulator:$PATH"
