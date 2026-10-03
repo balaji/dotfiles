@@ -1,21 +1,3 @@
-alias g='git'
-alias gpl='git pull'
-alias gpu='git push'
-alias gst='git status'
-alias ga='git add'
-alias gsh='git stash'
-alias gco='git checkout'
-alias gcm='git commit'
-alias gr='git rm'
-alias gfu='git fetch upstream'
-alias ls='ls -G --color=auto'
-alias tmux='tmux new -A -s main'
-alias e='emacsclient -c -a ""'
-
-# The following lines were added by Docker Desktop to add commands to your PATH.
-export PATH="$PATH:/Users/balaji/.docker/bin"
-# End of Docker Desktop section.
-
 case `uname` in
     Linux)
         alias ls='ls --color'
@@ -52,3 +34,13 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 
 export PATH="$HOME/.composio:$HOME/.local/bin:$HOME/.cargo/bin:$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/emulator:$PATH"
+
+# Added by flyctl installer
+export FLYCTL_INSTALL="/home/balaji/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/balaji/.docker/bin"
+# End of Docker Desktop section.
+
+

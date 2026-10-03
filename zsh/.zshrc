@@ -50,6 +50,20 @@ load-nvmrc() {
 #add-zsh-hook chpwd load-nvmrc
 #load-nvmrc
 
+alias g='git'
+alias gpl='git pull'
+alias gpu='git push'
+alias gst='git status'
+alias ga='git add'
+alias gsh='git stash'
+alias gco='git checkout'
+alias gcm='git commit'
+alias gr='git rm'
+alias gfu='git fetch upstream'
+alias ls='ls -G --color=auto'
+alias tmux='tmux new -A -s main'
+alias e='emacsclient -c -a ""'
+
 # HSTR configuration - add this to ~/.zshrc
 alias hh=hstr                    # hh to be alias for hstr
 setopt histignorespace           # skip cmds w/ leading space from history
