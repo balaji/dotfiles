@@ -36,11 +36,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.composio:$HOME/.local/bin:$HOME/.cargo/bin:$ANDROID_SDK_HOME/platform-tools:$ANDROID_SDK_HOME/emulator:$PATH"
 
 # Added by flyctl installer
-export FLYCTL_INSTALL="/home/balaji/.fly"
+export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 # The following lines were added by Docker Desktop to add commands to your PATH.
-export PATH="$PATH:/Users/balaji/.docker/bin"
+export PATH="$PATH:/$HOME/.docker/bin"
 # End of Docker Desktop section.
 
 
