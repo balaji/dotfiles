@@ -79,3 +79,14 @@ zle -N hstr_no_tiocsti
 bindkey '\C-r' hstr_no_tiocsti
 export HSTR_TIOCSTI=n
 
+
+# pnpm
+export PNPM_HOME="/Users/balaji/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/Users/balaji/.lmstudio/bin"

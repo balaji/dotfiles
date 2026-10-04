@@ -19,3 +19,6 @@ alias e='emacsclient -c -a ""'
 
 export VISUAL="emacsclient -c -nw -a ''"
 export EDITOR="emacsclient -c -nw -a ''"
+
+# Added by LM Studio CLI tool (lms)
+set -gx PATH $PATH /Users/balaji/.lmstudio/bin
