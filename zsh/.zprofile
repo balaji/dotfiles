@@ -43,4 +43,5 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 export PATH="$PATH:/$HOME/.docker/bin"
 # End of Docker Desktop section.
 
-
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"
