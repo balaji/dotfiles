@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (setq package-cache user-emacs-directory)
-(setq my-font "Google Sans Code Medium 11")
+(setq my-font "FiraCode Nerd Font Medium 11")
 (setq projects-path "~/projects")
 (setq package-manager "elpaca")
 (setq notes-directory "~/iclouddrive/org")
