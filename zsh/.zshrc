@@ -17,8 +17,6 @@ source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-. "$HOME/.cargo/env"
-
 # Added by `rbenv init` on Mon May 18 12:25:48 CEST 2026
 eval "$(rbenv init - --no-rehash zsh)"
 
@@ -78,4 +76,3 @@ hstr_no_tiocsti() {
 zle -N hstr_no_tiocsti
 bindkey '\C-r' hstr_no_tiocsti
 export HSTR_TIOCSTI=n
-

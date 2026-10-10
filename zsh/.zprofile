@@ -13,12 +13,14 @@ case `uname` in
         export EDITOR=vim
         export BREW_HOME=/opt/homebrew
         export PNPM_HOME="$HOME/Library/pnpm"
-	export ANDROID_SDK_HOME=$HOME/Library/Android/sdk
-	export PATH=$BREW_HOME/opt/coreutils/libexec/gnubin:$PATH
+        export ANDROID_SDK_HOME=$HOME/Library/Android/sdk
+        export PATH=$BREW_HOME/opt/coreutils/libexec/gnubin:$PATH
         ;;
 esac
 
-eval "$($BREW_HOME/bin/brew shellenv)"
+[ -s "$BREW_HOME" ] && eval "$($BREW_HOME/bin/brew shellenv)"
+
+# . "$HOME/.cargo/env"
 
 case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
